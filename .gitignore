@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Claude local config — never deploy
+.claude/
+
+# Raw/original photos (only web-optimized ones go up)
+photos/*.jpeg
+photos/*.jpg
+photos/*.JPG
+photos/*.JPEG
+photos/*.png
+photos/.DS_Store

@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Victor Hernandez — Experience</title>
+<meta name="description" content="Full professional experience for Victor Hernandez. Community Lead, Marketing Operator, and GTM Strategist with 7+ years in Web3.">
+<meta property="og:title" content="Victor Hernandez — Experience">
+<meta property="og:description" content="7+ years building communities and driving growth across Web3 and fintech.">
+<meta property="og:url" content="https://victorhq.com/experience.html">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+<link rel="manifest" href="favicon/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue: #1A56FF;
+    --coral: #FF4C35;
+    --yellow: #F5E642;
+    --base: #F5F3EE;
+    --ink: #0D0D0D;
+    --white: #FFFFFF;
+    --ink-60: rgba(13,13,13,0.6);
+    --ink-40: rgba(13,13,13,0.4);
+    --ink-15: rgba(13,13,13,0.15);
+    --ink-08: rgba(13,13,13,0.08);
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+    --font-head: 'Space Grotesk', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    font-weight: 400;
+    background: var(--base);
+    color: var(--ink);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+  }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
+
+  /* ---------- nav ---------- */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    z-index: 100;
+    background: rgba(245, 243, 238, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 1px 0 var(--ink-08);
+  }
+  .nav-inner {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo { font-family: var(--font-head); font-weight: 700; font-size: 1.15rem; letter-spacing: -0.02em; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    position: relative;
+    padding-bottom: 3px;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; left: 0; bottom: 0;
+    width: 0; height: 1px; background: var(--ink);
+    transition: width 0.4s var(--ease);
+  }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-links a.active::after { width: 100%; }
+
+  /* ---------- header ---------- */
+  .header {
+    padding: 160px 0 80px;
+  }
+  .eyebrow {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink-60);
+    border: 1px solid var(--ink-15);
+    border-radius: 100px;
+    padding: 7px 16px;
+    margin-bottom: 28px;
+  }
+  .header h1 {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    max-width: 16ch;
+  }
+  .header-sub {
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    color: var(--ink-60);
+    margin-top: 20px;
+    max-width: 52ch;
+  }
+  .header-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 36px;
+  }
+  .pill-link {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border: 1px solid var(--ink-15);
+    border-radius: 100px;
+    padding: 10px 18px;
+    transition: border-color 0.4s var(--ease), background 0.4s var(--ease), transform 0.4s var(--ease);
+  }
+  .pill-link:hover {
+    border-color: var(--ink);
+    transform: translateY(-2px);
+  }
+  .pill-link.primary {
+    background: var(--ink);
+    color: var(--base);
+    border-color: var(--ink);
+  }
+  .pill-link.primary:hover { background: var(--blue); border-color: var(--blue); }
+
+  /* ---------- section shared ---------- */
+  section { padding: 90px 0; }
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink-60);
+    margin-bottom: 48px;
+  }
+
+  /* ---------- timeline ---------- */
+  .timeline {
+    position: relative;
+    padding-left: 44px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: var(--ink-15);
+  }
+  .timeline-item {
+    position: relative;
+    padding-bottom: 64px;
+  }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-dot {
+    position: absolute;
+    left: -44px;
+    top: 6px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: var(--blue);
+    box-shadow: 0 0 0 4px var(--base);
+  }
+  .timeline-item:nth-child(3n+2) .timeline-dot { background: var(--coral); }
+  .timeline-item:nth-child(3n) .timeline-dot { background: #C9A700; }
+
+  .role-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px 24px;
+    margin-bottom: 4px;
+  }
+  .role-title {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 1.35rem;
+    letter-spacing: -0.01em;
+  }
+  .role-dates {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ink-60);
+    white-space: nowrap;
+  }
+  .role-meta {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.98rem;
+    color: var(--ink-60);
+    margin-bottom: 18px;
+  }
+  .role-meta span { color: var(--ink-40); }
+
+  .role-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .role-bullets li {
+    position: relative;
+    padding-left: 20px;
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: var(--ink-60);
+  }
+  .role-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 1px;
+    background: var(--ink-40);
+  }
+
+  .role-metrics {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--ink-08);
+  }
+
+  /* ---------- education ---------- */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .edu-card {
+    border: 1px solid var(--ink-15);
+    border-radius: 20px;
+    padding: 32px;
+    background: var(--white);
+  }
+  .edu-year {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-60);
+    margin-bottom: 14px;
+  }
+  .edu-title {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+  }
+  .edu-org {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--ink-60);
+    margin-bottom: 16px;
+  }
+  .edu-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .edu-card li {
+    position: relative;
+    padding-left: 18px;
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    color: var(--ink-60);
+    line-height: 1.6;
+  }
+  .edu-card li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 5px;
+    height: 1px;
+    background: var(--ink-40);
+  }
+
+  /* ---------- skills ---------- */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px 48px;
+  }
+  .skill-group-name {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-60);
+    margin-bottom: 14px;
+  }
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .skill-tag {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--ink);
+    border: 1px solid var(--ink-15);
+    border-radius: 100px;
+    padding: 6px 14px;
+  }
+
+  /* ---------- footer ---------- */
+  .footer {
+    background: var(--coral);
+    color: var(--white);
+    padding: 110px 0 56px;
+    text-align: center;
+    margin-top: 40px;
+  }
+  .footer h2 {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4.4vw, 2.8rem);
+    letter-spacing: -0.02em;
+    max-width: 16ch;
+    margin: 0 auto;
+  }
+  .footer-sub {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.85);
+    max-width: 40ch;
+    margin: 20px auto 40px;
+  }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--white);
+    color: var(--coral);
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 16px 28px;
+    border-radius: 100px;
+    transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+  }
+  .cta-btn:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 16px 32px -12px rgba(0,0,0,0.35); }
+  .cta-btn .arrow {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: rgba(255,76,53,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem;
+    transition: transform 0.4s var(--ease);
+  }
+  .cta-btn:hover .arrow { transform: translate(3px, -2px); }
+
+  .footer-links {
+    margin-top: 56px;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .footer-links a {
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+    padding-bottom: 2px;
+    transition: border-color 0.3s var(--ease);
+  }
+  .footer-links a:hover { border-color: var(--white); }
+
+  /* ---------- print ---------- */
+  @media print {
+    .nav, .footer, .header-links { display: none; }
+    .header { padding: 20px 0 40px; }
+    section { padding: 24px 0; }
+    body { background: var(--white); }
+    .timeline-item { break-inside: avoid; }
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 768px) {
+    .wrap { padding: 0 20px; }
+    .nav-inner { padding: 16px 20px; }
+    .nav-links { gap: 18px; }
+    .header { padding: 120px 0 60px; }
+    section { padding: 64px 0; }
+    .timeline { padding-left: 32px; }
+    .timeline-dot { left: -32px; }
+    .role-head { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; gap: 28px; }
+    .footer-links { flex-direction: column; gap: 16px; }
+  }
+
+  @media (max-width: 400px) {
+    .nav-inner { padding: 16px; }
+    .nav-links { gap: 12px; }
+    .nav-links a { font-size: 0.66rem; }
+    .logo { font-size: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">victorhq</a>
+    <ul class="nav-links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="experience.html" class="active">Experience</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="header">
+  <div class="wrap">
+    <span class="eyebrow reveal">Curriculum Vitae</span>
+    <h1 class="reveal">7+ years building communities that compound.</h1>
+    <p class="header-sub reveal">Community Lead, Marketing Operator, and GTM Strategist across Web3 and fintech. Mexico City. Bilingual EN/ES.</p>
+    <div class="header-links reveal">
+      <a class="pill-link primary" href="mailto:victor@victorhq.com">Email</a>
+      <a class="pill-link" href="https://linkedin.com/in/victorhhquezada" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="pill-link" href="https://twitter.com/VictorhqCrypto" target="_blank" rel="noopener">X / Twitter</a>
+      <a class="pill-link" href="index.html">Back to portfolio</a>
+      <a class="pill-link" href="javascript:window.print()">Print / Save PDF</a>
+    </div>
+  </div>
+</header>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-label reveal">Professional Experience</div>
+
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="role-head">
+          <div class="role-title">Community Lead</div>
+          <div class="role-dates">Oct 2025 — Present</div>
+        </div>
+        <div class="role-meta">Provenance Blockchain Foundation <span>· Full-time</span></div>
+        <ul class="role-bullets">
+          <li>Leading community strategy, Discord and Telegram growth, and ecosystem programming for Provenance Blockchain Foundation.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="role-head">
+          <div class="role-title">Member, Marketing &amp; Community</div>
+          <div class="role-dates">Oct 2025 — Present</div>
+        </div>
+        <div class="role-meta">Myosin <span>· Agency / Network</span></div>
+        <ul class="role-bullets">
+          <li>Embedded marketing and community operator for top-tier Web3 protocols.</li>
+          <li>GTM strategy, community growth, and cross-functional execution.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="role-head">
+          <div class="role-title">Marketing &amp; Community Manager</div>
+          <div class="role-dates">Jan 2024 — Aug 2025</div>
+        </div>
+        <div class="role-meta">Plume Network <span>· Full-time</span></div>
+        <ul class="role-bullets">
+          <li>Scaled Plume's social presence from 0 to mass adoption: Twitter to 1M+ followers, Discord to 400k+, Telegram to 295k+. Oversaw content strategy and daily community engagement.</li>
+          <li>Drove engagement during Plume's 3-month testnet campaign, sustained entirely through social campaigns and hands-on interaction. One of the most active RWA testnets.</li>
+          <li>Led marketing for both the Token Generation Event (TGE) and mainnet launch: integrated campaigns that mobilized community, partners, and validators.</li>
+          <li>Managed partnership marketing and co-branded initiatives with leading projects, strengthening Plume's positioning in the RWA ecosystem.</li>
+          <li>Created and scaled the @PlumeGoon alter-ego account to 250k+ followers: memes, culture, authentic Web3 humor. Zero paid promotion.</li>
+          <li>End-to-end event management across 10+ global conferences: Token2049 (Dubai + Singapore), ETH Denver, Devcon Bangkok, ETHCC Brussels, Korea Blockchain Week, Permissionless NYC, Consensus Austin, and more.</li>
+          <li>IRL activation: stepped into the boxing ring as "Plume Goon" at Crypto Fight Night Manila, custom shorts and luchador mask. Went viral.</li>
+        </ul>
+        <div class="role-metrics">1M+ Twitter &nbsp;·&nbsp; 400K+ Discord &nbsp;·&nbsp; 295K+ Telegram &nbsp;·&nbsp; 250K+ @PlumeGoon &nbsp;·&nbsp; 10+ global events</div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="role-head">
+          <div class="role-title">Community Manager LATAM</div>
+          <div class="role-dates">Jul 2022 — Jul 2023</div>
+        </div>
+        <div class="role-meta">BNB Chain · Binance <span>· Full-time</span></div>
+        <ul class="role-bullets">
+          <li>Expanded retail community by 150% in one year through digital campaigns and BTL activations, significantly increasing brand adoption across LATAM.</li>
+          <li>Orchestrated 80+ online events, 15 meetups, 2 hackathons, and 3 major conference sponsorships across 6 countries, engaging 3,000+ developers and driving ecosystem growth.</li>
+          <li>Forged strategic partnerships with developer communities, universities, blockchain associations, KOLs, and web2/web3 cohorts, built a robust regional network.</li>
+        </ul>
+        <div class="role-metrics">150% community growth &nbsp;·&nbsp; 6 countries &nbsp;·&nbsp; 80+ online events &nbsp;·&nbsp; 15 meetups &nbsp;·&nbsp; 2 hackathons &nbsp;·&nbsp; 3,000+ developers</div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="role-head">
+          <div class="role-title">Crypto Community Manager</div>
+          <div class="role-dates">Oct 2020 — Apr 2022</div>
+        </div>
+        <div class="role-meta">Bitso <span>· Full-time</span></div>
+        <ul class="role-bullets">
+          <li>Built community channels from zero to 30k organic members.</li>
+          <li>Managed 10+ event sponsorships, positioning Bitso as a thought leader in LATAM's crypto scene.</li>
+          <li>Converted qualitative user feedback into actionable recommendations for SEO and product teams.</li>
+          <li>Fostered meaningful connections through active community management and user support.</li>
+        </ul>
+        <div class="role-metrics">30K organic members &nbsp;·&nbsp; 10+ event sponsorships &nbsp;·&nbsp; LATAM brand positioning</div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="role-head">
+          <div class="role-title">Project Manager</div>
+          <div class="role-dates">Jul 2020 — Oct 2020</div>
+        </div>
+        <div class="role-meta">Vetta · Corporate Startup Generator <span>· Full-time</span></div>
+        <ul class="role-bullets">
+          <li>Identified and secured new B2B growth opportunities through market research.</li>
+          <li>Analyzed user feedback and implemented improvements to product/service quality.</li>
+          <li>Managed paid social media campaigns on Facebook and Google Ads.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="role-head">
+          <div class="role-title">Events &amp; Community Manager</div>
+          <div class="role-dates">Apr 2019 — Jul 2020</div>
+        </div>
+        <div class="role-meta">Ironhack <span>· Full-time</span></div>
+        <ul class="role-bullets">
+          <li>Orchestrated 60+ high-impact tech events and webinars in one year, fostering community and nurturing potential leads.</li>
+          <li>Managed and interviewed 400+ scholarship candidates, resulting in a 90% increase in total inscriptions.</li>
+          <li>Tailored content to target demographics, contributing to enhanced brand visibility and organic growth.</li>
+        </ul>
+        <div class="role-metrics">60+ events &nbsp;·&nbsp; 400+ candidates &nbsp;·&nbsp; 90% inscription increase</div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="role-head">
+          <div class="role-title">Project Manager</div>
+          <div class="role-dates">Dec 2018 — Jul 2020</div>
+        </div>
+        <div class="role-meta">Hult Prize Foundation <span>· Part-time / Volunteer</span></div>
+        <ul class="role-bullets">
+          <li>Organized and executed high-impact social entrepreneurship events.</li>
+          <li>Managed candidate selection processes for global student competition programs.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="role-head">
+          <div class="role-title">Community Programs Intern, LATAM</div>
+          <div class="role-dates">Feb 2018 — Dec 2020</div>
+        </div>
+        <div class="role-meta">Techstars <span>· Internship</span></div>
+        <ul class="role-bullets">
+          <li>Coordinated event operations across LATAM for Startup Weekend and Startup Week, seamless execution across multiple countries.</li>
+          <li>Standardized processes for local event organizers, improving coordination and program quality.</li>
+          <li>Developed and localized Spanish-language marketing materials tailored to regional audiences.</li>
+          <li>Collaborated with cross-country teams to enable scalable growth of startup-focused events.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="section-label reveal">Education</div>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <div class="edu-year">2021</div>
+        <div class="edu-title">Full Stack Web Development Bootcamp</div>
+        <div class="edu-org">Ironhack</div>
+        <ul>
+          <li>HTML, CSS, JavaScript, React (front-end)</li>
+          <li>Express.js, Node.js, MongoDB, Axios (back-end)</li>
+          <li>Git and GitHub for version control</li>
+        </ul>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-year">2016 — 2020</div>
+        <div class="edu-title">B.A. Communication and Entertainment Business Management</div>
+        <div class="edu-org">Escuela Bancaria y Comercial</div>
+        <ul>
+          <li>Digital media and content strategy: social media, audiovisual, industry trends</li>
+          <li>Business administration and finance: financial management, entrepreneurship</li>
+          <li>Entertainment industry management: distribution, events, commercialization</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-label reveal">Skills &amp; Tools</div>
+    <div class="skills-grid">
+      <div class="reveal">
+        <div class="skill-group-name">Analytics &amp; Tracking</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Google Analytics</span>
+          <span class="skill-tag">Mixpanel</span>
+          <span class="skill-tag">Firebase</span>
+          <span class="skill-tag">AppsFlyer</span>
+          <span class="skill-tag">Hotjar</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="skill-group-name">Content &amp; Design</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Illustrator</span>
+          <span class="skill-tag">Photoshop</span>
+          <span class="skill-tag">Figma</span>
+          <span class="skill-tag">Canva</span>
+          <span class="skill-tag">After Effects</span>
+          <span class="skill-tag">Final Cut</span>
+          <span class="skill-tag">CapCut</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="skill-group-name">Productivity &amp; Collaboration</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Google Workspace</span>
+          <span class="skill-tag">Notion</span>
+          <span class="skill-tag">Slack</span>
+          <span class="skill-tag">Trello</span>
+          <span class="skill-tag">Asana</span>
+          <span class="skill-tag">Miro</span>
+          <span class="skill-tag">Airtable</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="skill-group-name">Marketing Automation &amp; CRM</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Salesforce</span>
+          <span class="skill-tag">Pardot</span>
+          <span class="skill-tag">HubSpot</span>
+          <span class="skill-tag">Zapier</span>
+          <span class="skill-tag">Mailchimp</span>
+          <span class="skill-tag">Hootsuite</span>
+          <span class="skill-tag">Sendpulse</span>
+          <span class="skill-tag">Twilio</span>
+          <span class="skill-tag">Attio</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="skill-group-name">Paid Ads &amp; Social</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Facebook Ads</span>
+          <span class="skill-tag">Instagram</span>
+          <span class="skill-tag">X / Twitter</span>
+          <span class="skill-tag">LinkedIn Ads</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="skill-group-name">Web / Code</div>
+        <div class="skill-tags">
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">CSS</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">MongoDB</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <h2 class="reveal">Let's build something that lasts.</h2>
+    <p class="footer-sub reveal">Open to community, growth, and ecosystem roles in Web3 and fintech.</p>
+    <a class="cta-btn reveal" href="mailto:victor@victorhq.com">
+      Get in touch
+      <span class="arrow">→</span>
+    </a>
+    <div class="footer-links reveal">
+      <a href="https://twitter.com/VictorhqCrypto" target="_blank" rel="noopener">@VictorhqCrypto</a>
+      <a href="https://linkedin.com/in/victorhhquezada" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="index.html">victorhq.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var revealEls = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry, i) {
+      if (entry.isIntersecting) {
+        entry.target.style.transitionDelay = (i % 6) * 60 + 'ms';
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(function(el) { io.observe(el); });
+</script>
+
+</body>
+</html>

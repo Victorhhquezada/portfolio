@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Victor Hernandez — Community, Marketing, Web3</title>
+<meta name="description" content="Victor Hernandez. Community Lead, Marketing Operator, and GTM Strategist with 7+ years in Web3. 1M+ followers, $0 paid acquisition.">
+<meta property="og:title" content="Victor Hernandez — Community, Marketing, Web3">
+<meta property="og:description" content="I build communities people don't want to leave. 7+ years. 1M+ followers. $0 paid acquisition.">
+<meta property="og:url" content="https://victorhq.com">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+<link rel="manifest" href="favicon/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue: #1A56FF;
+    --coral: #FF4C35;
+    --yellow: #F5E642;
+    --base: #F5F3EE;
+    --ink: #0D0D0D;
+    --white: #FFFFFF;
+    --ink-60: rgba(13,13,13,0.6);
+    --ink-40: rgba(13,13,13,0.4);
+    --ink-15: rgba(13,13,13,0.15);
+    --ink-08: rgba(13,13,13,0.08);
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-float: cubic-bezier(0.45, 0, 0.55, 1);
+
+    --font-head: 'Space Grotesk', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    font-weight: 400;
+    background: var(--base);
+    color: var(--ink);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  img, svg { display: block; max-width: 100%; }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ---------- reveal-on-scroll ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  }
+  .reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ---------- nav ---------- */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: transparent;
+    box-shadow: none;
+    transition: background 0.4s var(--ease), box-shadow 0.4s var(--ease), padding 0.4s var(--ease);
+  }
+  .nav-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 26px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: padding 0.4s var(--ease);
+  }
+  .nav.scrolled {
+    background: rgba(245, 243, 238, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 1px 0 var(--ink-08);
+  }
+  .nav.scrolled .nav-inner { padding: 16px 32px; }
+  .logo {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    position: relative;
+    padding-bottom: 3px;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background: var(--ink);
+    transition: width 0.4s var(--ease);
+  }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* ---------- hero ---------- */
+  .hero {
+    position: relative;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    padding: 140px 0 80px;
+    overflow: hidden;
+  }
+  .hero-shapes {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  .hero-shapes svg {
+    width: 100%;
+    height: 100%;
+  }
+  .parallax { transform-origin: center; }
+  .float-a, .float-b, .float-c, .float-d, .float-e, .float-f, .float-g, .float-net {
+    transform-origin: center;
+  }
+  .float-a   { animation: floatA 22s var(--ease-float) infinite; }
+  .float-b   { animation: floatB 26s var(--ease-float) infinite; }
+  .float-c   { animation: floatC 19s var(--ease-float) infinite; }
+  .float-d   { animation: floatD 14s var(--ease-float) infinite; }
+  .float-e   { animation: floatE 17s var(--ease-float) infinite; }
+  .float-f   { animation: floatF 24s var(--ease-float) infinite; }
+  .float-g   { animation: floatG 20s var(--ease-float) infinite; }
+  .float-net { animation: floatNet 16s var(--ease-float) infinite; }
+
+  @keyframes floatA {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(20px, -16px); }
+    50%  { transform: translate(6px, -30px); }
+    75%  { transform: translate(-14px, -8px); }
+    100% { transform: translate(0, 0); }
+  }
+  @keyframes floatB {
+    0%   { transform: translate(0, 0); }
+    30%  { transform: translate(-22px, 14px); }
+    60%  { transform: translate(-8px, 32px); }
+    100% { transform: translate(0, 0); }
+  }
+  @keyframes floatC {
+    0%   { transform: translate(0, 0) scale(1); }
+    33%  { transform: translate(16px, 18px) scale(1.03); }
+    66%  { transform: translate(-10px, 26px) scale(0.98); }
+    100% { transform: translate(0, 0) scale(1); }
+  }
+  @keyframes floatD {
+    0%, 100% { transform: translate(0, 0); }
+    50%      { transform: translate(-18px, -22px); }
+  }
+  @keyframes floatE {
+    0%, 100% { transform: translate(0, 0); }
+    50%      { transform: translate(-14px, 20px); }
+  }
+  @keyframes floatF {
+    0%, 100% { transform: translate(0, 0); }
+    50%      { transform: translate(12px, 16px); }
+  }
+  @keyframes floatG {
+    0%, 100% { transform: translate(0, 0); }
+    50%      { transform: translate(10px, -14px); }
+  }
+  @keyframes floatNet {
+    0%, 100% { transform: translate(0, 0); }
+    50%      { transform: translate(8px, 10px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .float-a, .float-b, .float-c, .float-d, .float-e, .float-f, .float-g, .float-net {
+      animation: none;
+    }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+    width: 100%;
+  }
+  .hero-anchor {
+    background: rgba(245, 243, 238, 0.92);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 28px;
+    padding: 48px clamp(28px, 5vw, 64px);
+    max-width: 800px;
+    box-shadow: 0 30px 60px -20px rgba(13,13,13,0.12);
+  }
+  .hero h1 {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: clamp(2.2rem, 5vw, 4.2rem);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+  .rotator {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    height: 1.06em;
+    vertical-align: bottom;
+  }
+  .rotator-track {
+    display: flex;
+    flex-direction: column;
+  }
+  .rotator-word {
+    display: block;
+    height: 1.06em;
+    line-height: 1.06;
+    color: var(--blue);
+    white-space: nowrap;
+    text-align: center;
+  }
+  .hero-sub {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+    color: var(--ink-60);
+    margin-top: 22px;
+    max-width: 42ch;
+  }
+
+  /* ---------- capability ticker ---------- */
+  .ticker {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    overflow: hidden;
+    background: rgba(245, 243, 238, 0.85);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-top: 1px solid var(--ink-15);
+    border-bottom: 1px solid var(--ink-15);
+    padding: 16px 0;
+  }
+  .ticker-track {
+    display: flex;
+    width: max-content;
+    animation: tickerScroll 52s linear infinite;
+  }
+  .ticker-set {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+  .ticker-set span {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-40);
+  }
+  .ticker-dot {
+    color: var(--ink-15);
+    font-size: 0.9rem;
+  }
+  @keyframes tickerScroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track { animation: none; }
+  }
+
+  /* ---------- section shared ---------- */
+  section { padding: 120px 0; }
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink-60);
+    margin-bottom: 20px;
+  }
+  .section-title {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 64px;
+  }
+
+  /* ---------- work ---------- */
+  .work-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .card {
+    border: 1px solid var(--ink-15);
+    border-radius: 20px;
+    padding: 40px;
+    background: var(--base);
+    transition: transform 0.5s var(--ease), border-color 0.5s var(--ease), box-shadow 0.5s var(--ease);
+    display: flex;
+    flex-direction: column;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: var(--ink);
+    box-shadow: 0 24px 48px -24px rgba(13,13,13,0.18);
+  }
+  .card-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  .card:nth-child(1) .card-dot { background: var(--blue); }
+  .card:nth-child(2) .card-dot { background: var(--coral); }
+  .card:nth-child(3) .card-dot { background: #C9A700; }
+  .card:nth-child(4) .card-dot { background: var(--blue); }
+  .card-tag {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-60);
+    margin-bottom: 14px;
+  }
+  .card-title {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+  }
+  .card-desc {
+    font-family: var(--font-body);
+    font-weight: 400;
+    color: var(--ink-60);
+    font-size: 0.98rem;
+    line-height: 1.6;
+    flex-grow: 1;
+  }
+  .card-metrics {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--ink-08);
+  }
+
+  /* ---------- map ---------- */
+  .map-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2 / 1;
+    background: var(--white);
+    border: 1px solid var(--ink-15);
+    border-radius: 24px;
+    overflow: hidden;
+  }
+  .map-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .map-pins {
+    position: absolute;
+    inset: 0;
+  }
+  .map-pin {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+  .map-pin:focus { outline: none; }
+  .pin-dot {
+    display: block;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--blue);
+    border: 2px solid var(--white);
+    box-shadow: 0 0 0 3px rgba(13,13,13,0.06);
+    cursor: pointer;
+    transition: transform 0.4s var(--ease);
+  }
+  .map-pin::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--blue);
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.5;
+    animation: pinPulse 2.6s var(--ease) infinite;
+    pointer-events: none;
+  }
+  .map-pin:nth-of-type(3n+2) .pin-dot,
+  .map-pin:nth-of-type(3n+2)::before { background: var(--coral); }
+  .map-pin:nth-of-type(3n) .pin-dot,
+  .map-pin:nth-of-type(3n)::before { background: #C9A700; }
+  @keyframes pinPulse {
+    0%   { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+    100% { transform: translate(-50%, -50%) scale(3.2); opacity: 0; }
+  }
+  .map-pin:hover .pin-dot,
+  .map-pin.active .pin-dot { transform: scale(1.5); }
+
+  .pin-tooltip {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 12px);
+    transform: translate(-50%, 6px);
+    width: max-content;
+    max-width: 220px;
+    background: var(--ink);
+    color: var(--base);
+    border-radius: 14px;
+    padding: 14px 16px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
+    z-index: 5;
+  }
+  .map-pin:hover .pin-tooltip,
+  .map-pin.active .pin-tooltip {
+    opacity: 1;
+    transform: translate(-50%, 0);
+    pointer-events: auto;
+  }
+  .map-pin.edge-left .pin-tooltip { left: 0; transform: translate(0, 6px); }
+  .map-pin.edge-left:hover .pin-tooltip,
+  .map-pin.edge-left.active .pin-tooltip { transform: translate(0, 0); }
+  .map-pin.edge-right .pin-tooltip { left: auto; right: 0; transform: translate(0, 6px); }
+  .map-pin.edge-right:hover .pin-tooltip,
+  .map-pin.edge-right.active .pin-tooltip { transform: translate(0, 0); }
+  .map-pin.edge-top .pin-tooltip { bottom: auto; top: calc(100% + 12px); }
+
+  .pin-city {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 0.86rem;
+    letter-spacing: -0.01em;
+  }
+  .pin-country {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(245,243,238,0.55);
+    margin-top: 2px;
+    margin-bottom: 10px;
+  }
+  .pin-events {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .pin-events li {
+    position: relative;
+    padding-left: 12px;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    line-height: 1.4;
+    color: rgba(245,243,238,0.85);
+  }
+  .pin-events li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 5px;
+    height: 1px;
+    background: rgba(245,243,238,0.5);
+  }
+
+  .map-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-top: 28px;
+  }
+  .map-legend-item {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-60);
+  }
+  .map-legend-item strong {
+    font-family: var(--font-head);
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 1rem;
+    margin-right: 6px;
+    letter-spacing: -0.01em;
+  }
+  .map-hint {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-40);
+    margin-top: 16px;
+  }
+
+  /* ---------- proof of work ---------- */
+  .proof-grid {
+    columns: 4;
+    column-gap: 16px;
+  }
+  .proof-item {
+    break-inside: avoid;
+    margin-bottom: 16px;
+    border: 1px solid var(--ink-15);
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--white);
+    transition: border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+  }
+  .proof-item:hover {
+    border-color: var(--ink);
+    box-shadow: 0 20px 40px -24px rgba(13,13,13,0.2);
+  }
+  .proof-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.6s var(--ease);
+  }
+  .proof-item:hover img { transform: scale(1.04); }
+  .proof-caption {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.01em;
+    line-height: 1.4;
+    color: var(--ink-60);
+    padding: 10px 12px;
+  }
+  .proof-caption span { color: var(--ink-40); margin: 0 1px; }
+
+  /* ---------- about ---------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .about h2 {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 32px;
+  }
+  .about p {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--ink-60);
+    margin-bottom: 20px;
+    max-width: 52ch;
+  }
+  .about p strong { font-weight: 500; color: var(--ink); }
+
+  .currently-card {
+    border: 1px solid var(--ink-15);
+    border-radius: 20px;
+    padding: 36px;
+    background: var(--white);
+  }
+  .currently-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-60);
+    margin-bottom: 24px;
+  }
+  .role-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 0;
+    border-top: 1px solid var(--ink-08);
+  }
+  .role-row:first-of-type { border-top: none; padding-top: 0; }
+  .role-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-top: 7px;
+    flex-shrink: 0;
+    background: var(--blue);
+  }
+  .role-row:nth-of-type(2) .role-dot { background: var(--coral); }
+  .role-title {
+    font-family: var(--font-head);
+    font-weight: 500;
+    font-size: 1rem;
+  }
+  .role-org {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--ink-60);
+    margin-top: 2px;
+  }
+  .open-line {
+    margin-top: 20px;
+    padding: 14px 18px;
+    background: var(--yellow);
+    border-radius: 12px;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+  }
+
+  /* ---------- footer ---------- */
+  .footer {
+    background: var(--coral);
+    color: var(--white);
+    padding: 120px 0 60px;
+    text-align: center;
+  }
+  .footer h2 {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    letter-spacing: -0.02em;
+    max-width: 16ch;
+    margin: 0 auto;
+  }
+  .footer-sub {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.85);
+    max-width: 44ch;
+    margin: 24px auto 44px;
+  }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--white);
+    color: var(--coral);
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 16px 28px;
+    border-radius: 100px;
+    transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+  }
+  .cta-btn:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 16px 32px -12px rgba(0,0,0,0.35);
+  }
+  .cta-btn .arrow {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(255,76,53,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    transition: transform 0.4s var(--ease);
+  }
+  .cta-btn:hover .arrow { transform: translate(3px, -2px); }
+
+  .social-links {
+    margin-top: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .social-link {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.14);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.4s var(--ease), color 0.4s var(--ease), transform 0.4s var(--ease);
+  }
+  .social-link svg {
+    width: 19px;
+    height: 19px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .social-link:hover {
+    background: var(--white);
+    color: var(--coral);
+    transform: translateY(-3px);
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 768px) {
+    .wrap { padding: 0 20px; }
+    .nav-inner { padding: 20px; }
+    .nav-links { gap: 20px; }
+    .hero { padding: 120px 0 60px; }
+    .hero-content { padding: 0 20px; }
+    .hero-anchor { padding: 32px 24px; border-radius: 20px; }
+    .hero h1 { white-space: normal; }
+    .rotator { vertical-align: bottom; }
+    .stats { flex-direction: column; gap: 20px; }
+    .stat { padding-right: 0 !important; }
+    .stat + .stat { padding-left: 0 !important; border-left: none; border-top: 1px solid var(--ink-15); padding-top: 20px; }
+    section { padding: 80px 0; }
+    .work-grid { grid-template-columns: 1fr; }
+    .map-wrap { aspect-ratio: 1 / 1.05; border-radius: 18px; }
+    .pin-tooltip { max-width: 180px; padding: 12px 14px; }
+    .map-legend { gap: 20px; }
+    .proof-grid { columns: 2; column-gap: 10px; }
+    .proof-item { margin-bottom: 10px; border-radius: 12px; }
+    .proof-caption { font-size: 0.62rem; padding: 8px 10px; }
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .footer { padding: 90px 0 48px; }
+    .social-links { gap: 10px; margin-top: 48px; }
+    .social-link { width: 42px; height: 42px; }
+  }
+
+  @media (max-width: 400px) {
+    .nav-inner { padding: 16px; }
+    .nav-links { gap: 12px; }
+    .nav-links a { font-size: 0.66rem; }
+    .logo { font-size: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">victorhq</a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-shapes" aria-hidden="true">
+    <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <g class="parallax" data-depth="8">
+        <circle class="float-a" cx="260" cy="140" r="240" fill="#F5E642" opacity="0.95"/>
+      </g>
+      <g class="parallax" data-depth="10">
+        <path class="float-b" d="M1120 90 C1340 40 1500 220 1470 420 C1440 620 1240 660 1080 560 C920 460 900 140 1120 90Z" fill="#1A56FF" opacity="0.92"/>
+      </g>
+      <g class="parallax" data-depth="7">
+        <circle class="float-c" cx="360" cy="700" r="300" fill="#FF4C35" opacity="0.9"/>
+      </g>
+      <g class="parallax" data-depth="18">
+        <circle class="float-d" cx="1360" cy="740" r="130" fill="#1A56FF" opacity="0.85"/>
+      </g>
+      <g class="parallax" data-depth="20">
+        <circle class="float-e" cx="1280" cy="140" r="80" fill="#FF4C35" opacity="0.9"/>
+      </g>
+      <g class="parallax" data-depth="14">
+        <circle class="float-f" cx="920" cy="120" r="150" fill="none" stroke="#F5F3EE" stroke-width="3" opacity="0.7"/>
+      </g>
+      <g class="parallax" data-depth="12">
+        <circle class="float-g" cx="60" cy="500" r="60" fill="none" stroke="#0D0D0D" stroke-width="1.5" opacity="0.15"/>
+      </g>
+      <g class="parallax" data-depth="24">
+        <g class="float-net">
+          <g stroke="#0D0D0D" stroke-width="1" opacity="0.14">
+            <line x1="480" y1="220" x2="720" y2="360"/>
+            <line x1="720" y1="360" x2="980" y2="260"/>
+            <line x1="480" y1="220" x2="560" y2="480"/>
+          </g>
+          <g fill="#0D0D0D" opacity="0.35">
+            <circle cx="480" cy="220" r="4"/>
+            <circle cx="720" cy="360" r="4"/>
+            <circle cx="980" cy="260" r="4"/>
+            <circle cx="560" cy="480" r="4"/>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-anchor">
+      <h1>Full-stack <span class="rotator" id="rotator"><span class="rotator-track" id="rotatorTrack"></span></span> operator.</h1>
+      <p class="hero-sub">7+ years building brands, communities, and growth engines from zero across Web3 and beyond.</p>
+    </div>
+  </div>
+
+  <div class="ticker">
+    <div class="ticker-track">
+      <span class="ticker-set">
+        <span>Growth Strategy</span>
+        <span class="ticker-dot">·</span>
+        <span>Community Building</span>
+        <span class="ticker-dot">·</span>
+        <span>GTM Execution</span>
+        <span class="ticker-dot">·</span>
+        <span>Social Media</span>
+        <span class="ticker-dot">·</span>
+        <span>Event Marketing</span>
+        <span class="ticker-dot">·</span>
+        <span>Marketing Ops</span>
+        <span class="ticker-dot">·</span>
+        <span>Brand Positioning</span>
+        <span class="ticker-dot">·</span>
+        <span>Ecosystem Growth</span>
+        <span class="ticker-dot">·</span>
+        <span>LATAM Markets</span>
+        <span class="ticker-dot">·</span>
+        <span>Tokenized Assets</span>
+        <span class="ticker-dot">·</span>
+        <span>RWA</span>
+        <span class="ticker-dot">·</span>
+        <span>Organic Acquisition</span>
+        <span class="ticker-dot">·</span>
+      </span>
+      <span class="ticker-set" aria-hidden="true">
+        <span>Growth Strategy</span>
+        <span class="ticker-dot">·</span>
+        <span>Community Building</span>
+        <span class="ticker-dot">·</span>
+        <span>GTM Execution</span>
+        <span class="ticker-dot">·</span>
+        <span>Social Media</span>
+        <span class="ticker-dot">·</span>
+        <span>Event Marketing</span>
+        <span class="ticker-dot">·</span>
+        <span>Marketing Ops</span>
+        <span class="ticker-dot">·</span>
+        <span>Brand Positioning</span>
+        <span class="ticker-dot">·</span>
+        <span>Ecosystem Growth</span>
+        <span class="ticker-dot">·</span>
+        <span>LATAM Markets</span>
+        <span class="ticker-dot">·</span>
+        <span>Tokenized Assets</span>
+        <span class="ticker-dot">·</span>
+        <span>RWA</span>
+        <span class="ticker-dot">·</span>
+        <span>Organic Acquisition</span>
+        <span class="ticker-dot">·</span>
+      </span>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-label reveal">Selected Work</div>
+    <div class="work-grid">
+      <div class="card reveal">
+        <div class="card-dot"></div>
+        <div class="card-tag">Plume Network · Brand · 2024–2025</div>
+        <div class="card-title">Plume Goon: Alter Ego Account</div>
+        <p class="card-desc">Created and scaled a crypto alter-ego account combining memes, culture, and authentic Web3 humor. Built a distinct brand voice that made Plume feel human in a space full of corporate accounts. Zero paid promotion.</p>
+        <div class="card-metrics">250K+ organic followers</div>
+      </div>
+      <div class="card reveal">
+        <div class="card-dot"></div>
+        <div class="card-tag">Plume Network · Events · Global</div>
+        <div class="card-title">International Conferences &amp; GTM</div>
+        <p class="card-desc">End-to-end event management across Token2049 (Dubai + Singapore), ETH Denver, Devcon Bangkok, ETHCC Brussels, Korea Blockchain Week Seoul, Permissionless NYC, Consensus Austin, and more.</p>
+        <div class="card-metrics">10+ global events &nbsp;·&nbsp; 4 continents</div>
+      </div>
+      <div class="card reveal">
+        <div class="card-dot"></div>
+        <div class="card-tag">Plume Network · Community · 2024–2025</div>
+        <div class="card-title">0 → 1M+ Community Growth</div>
+        <p class="card-desc">Built one of the most active RWA communities in Web3 from scratch. Testnet campaign, TGE, and mainnet launch, all community-led. No paid acquisition, no shortcuts.</p>
+        <div class="card-metrics">1M+ Twitter &nbsp;·&nbsp; 400K+ Discord &nbsp;·&nbsp; $0 budget</div>
+      </div>
+      <div class="card reveal">
+        <div class="card-dot"></div>
+        <div class="card-tag">BNB Chain LATAM · Growth · 2022–2023</div>
+        <div class="card-title">BNB Chain LATAM Expansion</div>
+        <p class="card-desc">Led ecosystem growth across 8 cities in 6 Latin American countries: meetups, hackathons, university programs, and regional campaigns. 150% retail community growth in 12 months.</p>
+        <div class="card-metrics">8 cities &nbsp;·&nbsp; 6 countries &nbsp;·&nbsp; 150% growth</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="map">
+  <div class="wrap">
+    <div class="section-label reveal">On the Ground</div>
+    <div class="section-title reveal">4 continents. 20 cities. Always in the room.</div>
+    <div class="map-wrap reveal">
+      <svg class="map-svg" viewBox="0 0 100 50" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M8,5 C18,3 30,4 34,9 C36,13 33,16 30,15 C33,18 28,21 24,22 C22,23 20,22 21,20 C15,21 10,19 8,16 C4,13 5,8 8,5 Z" fill="var(--ink)" opacity="0.06"/>
+        <path d="M30,22 C35,21 39,24 39,29 C39,34 37,39 33,40 C30,41 28,38 28,34 C26,31 27,25 30,22 Z" fill="var(--ink)" opacity="0.06"/>
+        <path d="M48,10 C50,6 56,5 60,7 C62,9 60,12 57,13 C54,15 49,14 48,10 Z" fill="var(--ink)" opacity="0.06"/>
+        <path d="M50,15 C56,14 62,17 62,23 C63,28 60,34 55,35 C51,35 48,31 47,26 C45,22 46,17 50,15 Z" fill="var(--ink)" opacity="0.06"/>
+        <path d="M60,10 C65,5 75,3 85,5 C92,7 93,12 90,16 C93,18 90,22 85,23 C78,25 70,22 65,18 C60,16 58,13 60,10 Z" fill="var(--ink)" opacity="0.06"/>
+        <path d="M82,30 C86,28 92,29 93,33 C93,36 88,38 84,37 C81,36 80,32 82,30 Z" fill="var(--ink)" opacity="0.06"/>
+      </svg>
+      <div class="map-pins" id="mapPins"></div>
+    </div>
+    <div class="map-legend reveal">
+      <div class="map-legend-item"><strong>20</strong>Cities</div>
+      <div class="map-legend-item"><strong>12</strong>Countries</div>
+      <div class="map-legend-item"><strong>4</strong>Continents</div>
+    </div>
+    <div class="map-hint reveal">Hover or tap a pin to see the event</div>
+  </div>
+</section>
+
+<section id="proof">
+  <div class="wrap">
+    <div class="section-label reveal">Proof of Work</div>
+    <div class="section-title reveal">Seven years, on the ground.</div>
+    <div class="proof-grid">
+      <div class="proof-item reveal">
+        <img src="photos/web/blockchainland-monterrey-2022.jpg" alt="BlockchainLand, Monterrey 2022" loading="lazy">
+        <div class="proof-caption">BlockchainLand <span>·</span> Monterrey, 2022</div>
+      </div>
+      <div class="proof-item reveal">
+        <img src="photos/web/blockchainland-workshop-monterrey-2022.jpg" alt="BlockchainLand Workshop, Monterrey 2022" loading="lazy">
+        <div class="proof-caption">BlockchainLand Workshop <span>·</span> Monterrey, 2022</div>
+      </div>
+      <div class="proof-item reveal">
+        <img src="photos/web/bnb-meetup-medellin-2022.jpg" alt="BNB Chain Meetup, Medellín 2022" loading="lazy">
+        <div class="proof-caption">BNB Chain Meetup <span>·</span> Medellín, 2022</div>
+      </div>
+      <div class="proof-item reveal">
+        <img src="photos/web/bnb-chain-meetup-bogota-2022.jpg" alt="BNB Chain Meetup, Bogotá 2022" loading="lazy">
+        <div class="proof-caption">BNB Chain Meetup <span>·</span> Bogotá, 2022</div>
+      </div>
+      <div class="proof-item reveal">
+        <img src="photos/web/crypto-fight-night-ring-manila-2025.jpg" alt="Crypto Fight Night, in the ring, Manila 2025" loading="lazy">
+        <div class="proof-caption">Crypto Fight Night, in the ring <span>·</span> Manila, 2025</div>
+      </div>
+      <div class="proof-item reveal">
+        <img src="photos/web/crypto-fight-night-manila-2025.jpg" alt="Crypto Fight Night, Manila 2025" loading="lazy">
+        <div class="proof-caption">Crypto Fight Night <span>·</span> Manila, 2025</div>
+      </div>
+      <div class="proof-item reveal">
+        <img src="photos/web/devcon-bnb-chain-team-bogota-2022.jpg" alt="Devcon with the BNB Chain team, Bogotá 2022" loading="lazy">
+        <div class="proof-caption">Devcon with the BNB Chain team <span>·</span> Bogotá, 2022</div>
+      </div>
+      <div class="proof-item reveal">
+        <img src="photos/web/devcon-bnb-team-bogota-2022.jpg" alt="Devcon with the BNB team, Bogotá 2022" loading="lazy">
+        <div class="proof-caption">Devcon with the BNB team <span>·</span> Bogotá, 2022</div>
+      </div>
+      <div class="proof-item reveal">
+        <img src="photos/web/labitconf-bitso-booth-elsalvador-2021.jpg" alt="Labitconf, Bitso booth, El Salvador 2021" loading="lazy">
+        <div class="proof-caption">Labitconf, Bitso booth <span>·</span> El Salvador, 2021</div>
+      </div>
+      <div class="proof-item reveal">
+        <img src="photos/web/labitconf-bitso-team-elsalvador-2021.jpg" alt="Labitconf with the Bitso team, El Salvador 2021" loading="lazy">
+        <div class="proof-caption">Labitconf with the Bitso team <span>·</span> El Salvador, 2021</div>
+      </div>
+      <div class="proof-item reveal">
+        <img src="photos/web/labitconf-elsalvador-2021.jpg" alt="Labitconf, El Salvador 2021" loading="lazy">
+        <div class="proof-caption">Labitconf <span>·</span> El Salvador, 2021</div>
+      </div>
+      <div class="proof-item reveal">
+        <img src="photos/web/labitconf-argentina-2022.jpg" alt="Labitconf, Argentina 2022" loading="lazy">
+        <div class="proof-caption">Labitconf <span>·</span> Argentina, 2022</div>
+      </div>
+      <div class="proof-item reveal">
+        <img src="photos/web/ooh-campaign-elsalvador-2021.jpg" alt="OOH Campaign, El Salvador 2021" loading="lazy">
+        <div class="proof-caption">OOH Campaign <span>·</span> El Salvador, 2021</div>
+      </div>
+      <div class="proof-item reveal">
+        <img src="photos/web/stellar-house-talk-cdmx-2026.jpg" alt="On stage, Stellar House, Mexico City 2026" loading="lazy">
+        <div class="proof-caption">On stage, Stellar House <span>·</span> Mexico City, 2026</div>
+      </div>
+      <div class="proof-item reveal">
+        <img src="photos/web/platziconf-bogota-2022.jpg" alt="Platzi Conf, Bogotá 2022" loading="lazy">
+        <div class="proof-caption">Platzi Conf <span>·</span> Bogotá, 2022</div>
+      </div>
+      <div class="proof-item reveal">
+        <img src="photos/web/plume-founding-team-newyork-2024.jpg" alt="Plume founding team, New York 2024" loading="lazy">
+        <div class="proof-caption">Plume founding team <span>·</span> New York, 2024</div>
+      </div>
+      <div class="proof-item reveal">
+        <img src="photos/web/plume-meetup-tokyo-2024.jpg" alt="Plume Meetup, Tokyo 2024" loading="lazy">
+        <div class="proof-caption">Plume Meetup <span>·</span> Tokyo, 2024</div>
+      </div>
+      <div class="proof-item reveal">
+        <img src="photos/web/plume-meetup-devcon-bangkok-2024.jpg" alt="Plume Meetup at Devcon, Bangkok 2024" loading="lazy">
+        <div class="proof-caption">Plume Meetup at Devcon <span>·</span> Bangkok, 2024</div>
+      </div>
+      <div class="proof-item reveal">
+        <img src="photos/web/plume-meetup-korea-2025.jpg" alt="Plume Meetup, Korea 2025" loading="lazy">
+        <div class="proof-caption">Plume Meetup <span>·</span> Korea, 2025</div>
+      </div>
+      <div class="proof-item reveal">
+        <img src="photos/web/plume-rwa-day-austin-2024.jpg" alt="Plume RWA Day, Austin 2024" loading="lazy">
+        <div class="proof-caption">Plume RWA Day <span>·</span> Austin, 2024</div>
+      </div>
+      <div class="proof-item reveal">
+        <img src="photos/web/plume-meetup-hongkong-2024.jpg" alt="Plume Meetup, Hong Kong 2024" loading="lazy">
+        <div class="proof-caption">Plume Meetup <span>·</span> Hong Kong, 2024</div>
+      </div>
+      <div class="proof-item reveal">
+        <img src="photos/web/startup-weekend-cdmx-2019.jpg" alt="Startup Weekend, Mexico City 2019" loading="lazy">
+        <div class="proof-caption">Startup Weekend <span>·</span> Mexico City, 2019</div>
+      </div>
+      <div class="proof-item reveal">
+        <img src="photos/web/stellar-hackathon-cdmx-2022.jpg" alt="Stellar Hackathon, Mexico City 2022" loading="lazy">
+        <div class="proof-caption">Stellar Hackathon <span>·</span> Mexico City, 2022</div>
+      </div>
+      <div class="proof-item reveal">
+        <img src="photos/web/stellar-house-workshop-cdmx-2026.jpg" alt="Stellar House Workshop, Mexico City 2026" loading="lazy">
+        <div class="proof-caption">Stellar House Workshop <span>·</span> Mexico City, 2026</div>
+      </div>
+      <div class="proof-item reveal">
+        <img src="photos/web/with-figure-ceo-mexicocity-2026.jpg" alt="With Figure's CEO, Mexico City 2026" loading="lazy">
+        <div class="proof-caption">With Figure's CEO <span>·</span> Mexico City, 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about reveal">
+        <h2>Community isn't a channel. It's a culture you build.</h2>
+        <p>I've spent 7+ years building and running communities in Web3, from zero to a million-plus followers, without paid acquisition. Based in Mexico City, bilingual in Spanish and English, and I've built programs across 6 countries in LATAM.</p>
+        <p>Lately I'm focused on where <strong>RWA and TradFi meet Web3</strong>: helping serious financial products find their footing in crypto-native communities, and helping crypto-native communities take TradFi seriously.</p>
+      </div>
+      <div class="reveal">
+        <div class="currently-card">
+          <div class="currently-label">Currently</div>
+          <div class="role-row">
+            <div class="role-dot"></div>
+            <div>
+              <div class="role-title">Community Lead</div>
+              <div class="role-org">Provenance Blockchain Foundation</div>
+            </div>
+          </div>
+          <div class="role-row">
+            <div class="role-dot"></div>
+            <div>
+              <div class="role-title">Member</div>
+              <div class="role-org">Myosin</div>
+            </div>
+          </div>
+          <div class="open-line">Open to new roles: Community · Growth · GTM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <h2 class="reveal">Let's build something that lasts.</h2>
+    <p class="footer-sub reveal">Open to community, growth, and ecosystem roles in Web3 and fintech.</p>
+    <a class="cta-btn reveal" href="mailto:victor@victorhq.com">
+      Get in touch
+      <span class="arrow">→</span>
+    </a>
+    <div class="social-links reveal">
+      <a class="social-link" href="https://x.com/VictorhqCrypto" target="_blank" rel="noopener" aria-label="X (Twitter)">
+        <svg viewBox="0 0 24 24"><path d="M5 5L19 19M19 5L5 19"/></svg>
+      </a>
+      <a class="social-link" href="https://github.com/Victorhhquezada" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+      </a>
+      <a class="social-link" href="https://www.victorhq.com" target="_blank" rel="noopener" aria-label="Website">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></svg>
+      </a>
+      <a class="social-link" href="https://instagram.com/victorhqcrypto" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.4"/><circle cx="16.3" cy="7.7" r="0.7" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a class="social-link" href="https://www.linkedin.com/in/victorhhquezada" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M6.5 9.5v8M6.5 6v.01"/><path d="M10.5 17.5v-4.5a2.8 2.8 0 0 1 5.5 0v4.5M10.5 9.5v8"/></svg>
+      </a>
+      <a class="social-link" href="https://t.me/victorhqcrypto" target="_blank" rel="noopener" aria-label="Telegram">
+        <svg viewBox="0 0 24 24"><path d="M21 3L3 10.5l6.5 2.3M21 3l-3 17.5-7.5-7.2M21 3L11 13.6v5.9"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---------- hero shape parallax ----------
+  (function() {
+    var heroEl = document.querySelector('.hero');
+    var layerEls = heroEl ? heroEl.querySelectorAll('.hero-shapes .parallax') : [];
+    if (!heroEl || !layerEls.length) return;
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (reduceMotion || !finePointer) return;
+
+    var layers = Array.prototype.map.call(layerEls, function(el) {
+      return { el: el, depth: parseFloat(el.getAttribute('data-depth')) || 0, curX: 0, curY: 0 };
+    });
+
+    var targetX = 0;
+    var targetY = 0;
+    var heroVisible = true;
+
+    heroEl.addEventListener('mousemove', function(e) {
+      var rect = heroEl.getBoundingClientRect();
+      targetX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+      targetY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+    });
+    heroEl.addEventListener('mouseleave', function() {
+      targetX = 0;
+      targetY = 0;
+    });
+
+    new IntersectionObserver(function(entries) {
+      heroVisible = entries[0].isIntersecting;
+    }, { threshold: 0 }).observe(heroEl);
+
+    function tick() {
+      if (heroVisible && !document.hidden) {
+        layers.forEach(function(l) {
+          var tx = targetX * l.depth;
+          var ty = targetY * l.depth;
+          l.curX += (tx - l.curX) * 0.06;
+          l.curY += (ty - l.curY) * 0.06;
+          l.el.style.transform = 'translate(' + l.curX.toFixed(2) + 'px, ' + l.curY.toFixed(2) + 'px)';
+        });
+      }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  })();
+
+  // nav scroll state
+  var nav = document.getElementById('nav');
+  var ticking = false;
+  function onScroll() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // scroll reveal
+  var revealEls = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry, i) {
+      if (entry.isIntersecting) {
+        entry.target.style.transitionDelay = (i % 4) * 80 + 'ms';
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(function(el) { io.observe(el); });
+
+  // ---------- headline word rotator ----------
+  (function() {
+    var track = document.getElementById('rotatorTrack');
+    var rotator = document.getElementById('rotator');
+    if (!track || !rotator) return;
+
+    var words = ['marketing', 'growth', 'GTM', 'community', 'brand'];
+    var loopWords = words.concat([words[0]]);
+
+    loopWords.forEach(function(w) {
+      var span = document.createElement('span');
+      span.className = 'rotator-word';
+      span.textContent = w;
+      track.appendChild(span);
+    });
+
+    var wordEls = track.children;
+    var lineHeight = 0;
+    var idx = 0;
+
+    function measure() {
+      rotator.style.width = 'auto';
+      var maxWidth = 0;
+      Array.prototype.forEach.call(wordEls, function(el) {
+        maxWidth = Math.max(maxWidth, el.getBoundingClientRect().width);
+      });
+      rotator.style.width = Math.ceil(maxWidth) + 'px';
+      lineHeight = wordEls[0].getBoundingClientRect().height;
+      track.style.transition = 'none';
+      track.style.transform = 'translateY(-' + (idx * lineHeight) + 'px)';
+    }
+    measure();
+
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(measure, 150);
+    });
+
+    setInterval(function() {
+      idx++;
+      track.style.transition = 'transform 0.35s cubic-bezier(0.65, 0, 0.35, 1)';
+      track.style.transform = 'translateY(-' + (idx * lineHeight) + 'px)';
+      if (idx === loopWords.length - 1) {
+        setTimeout(function() {
+          track.style.transition = 'none';
+          idx = 0;
+          track.style.transform = 'translateY(0px)';
+          void track.offsetHeight;
+        }, 380);
+      }
+    }, 2000);
+  })();
+
+  // ---------- interactive map ----------
+  var cities = [
+    { city: 'San Salvador', country: 'El Salvador',   lat: 13.69,  lon: -89.22,  events: ['Labitconf 2021, main sponsor with Bitso'] },
+    { city: 'Mexico City',  country: 'Mexico',         lat: 19.43,  lon: -99.13,  events: ['Talent Land 2026', 'Stellar House 2026', 'Bitso Meetup 2022', 'BNB Chain Meetup 2022'] },
+    { city: 'Monterrey',    country: 'Mexico',         lat: 25.67,  lon: -100.31, events: ['BlockchainLand 2022'] },
+    { city: 'Guadalajara',  country: 'Mexico',         lat: 20.66,  lon: -103.35, events: ['Talent Land 2023'] },
+    { city: 'Mérida',       country: 'Mexico',         lat: 20.97,  lon: -89.59,  events: ['ETH Mexico 2024, speaker'] },
+    { city: 'Bogotá',       country: 'Colombia',       lat: 4.71,   lon: -74.07,  events: ['Platzi Conf 2022, main sponsor with BNB', 'BNB Chain Meetup 2022'] },
+    { city: 'Medellín',     country: 'Colombia',       lat: 6.24,   lon: -75.57,  events: ['BNB Chain Meetup 2022'] },
+    { city: 'Lima',         country: 'Peru',           lat: -12.04, lon: -77.04,  events: ['University Meetup 2023, panel participant'] },
+    { city: 'Buenos Aires', country: 'Argentina',      lat: -34.60, lon: -58.38,  events: ['Panel host, River event at Devconnect 2025', 'BNB Chain Meetup 2022'] },
+    { city: 'Córdoba',      country: 'Argentina',      lat: -31.42, lon: -64.18,  events: ['Endeavor event 2022, sponsor'] },
+    { city: 'Miami',        country: 'United States',  lat: 25.76,  lon: -80.19,  events: ['RWA House ops for Figure at Consensus 2026'] },
+    { city: 'New York',     country: 'United States',  lat: 40.71,  lon: -74.01,  events: ['Plume happy hour 2024', 'NYC office opening party 2025'] },
+    { city: 'Austin',       country: 'United States',  lat: 30.27,  lon: -97.74,  events: ['Plume side event at Consensus 2024'] },
+    { city: 'Denver',       country: 'United States',  lat: 39.74,  lon: -104.99, events: ['Plume side event at ETH Denver 2024', 'Plume side event at ETH Denver 2025'] },
+    { city: 'Brussels',     country: 'Belgium',        lat: 50.85,  lon: 4.35,    events: ['Plume side event at ETHCC 2024'] },
+    { city: 'Dubai',        country: 'UAE',            lat: 25.20,  lon: 55.27,   events: ['Plume side event at Token2049 2024', 'Plume side event at Token2049 2025'] },
+    { city: 'Seoul',        country: 'South Korea',    lat: 37.57,  lon: 126.98,  events: ['Plume side event at KBW 2024'] },
+    { city: 'Singapore',    country: 'Singapore',      lat: 1.35,   lon: 103.82,  events: ['Plume happy hour at Token2049 2024', 'Plume demo day at Token2049 2024', 'Plume side events at Token2049 2024'] },
+    { city: 'Bangkok',      country: 'Thailand',       lat: 13.76,  lon: 100.50,  events: ['Plume happy hour at Devcon 2024', 'Plume side events at Devcon 2024'] },
+    { city: 'Manila',       country: 'Philippines',    lat: 14.60,  lon: 120.98,  events: ['Crypto Fight Night 2025, fighter'] }
+  ];
+
+  var mapPinsEl = document.getElementById('mapPins');
+
+  if (mapPinsEl) {
+    cities.forEach(function(c) {
+      var left = (c.lon + 180) / 360 * 100;
+      var top = (90 - c.lat) / 180 * 100;
+
+      var pin = document.createElement('div');
+      pin.className = 'map-pin';
+      pin.style.left = left + '%';
+      pin.style.top = top + '%';
+      pin.tabIndex = 0;
+      pin.setAttribute('role', 'button');
+      pin.setAttribute('aria-label', c.city + ', ' + c.country);
+
+      if (left < 14) pin.classList.add('edge-left');
+      else if (left > 86) pin.classList.add('edge-right');
+      if (top < 12) pin.classList.add('edge-top');
+
+      var eventsHtml = c.events.map(function(e) { return '<li>' + e + '</li>'; }).join('');
+
+      pin.innerHTML =
+        '<span class="pin-dot"></span>' +
+        '<div class="pin-tooltip">' +
+          '<div class="pin-city">' + c.city + '</div>' +
+          '<div class="pin-country">' + c.country + '</div>' +
+          '<ul class="pin-events">' + eventsHtml + '</ul>' +
+        '</div>';
+
+      pin.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var wasActive = pin.classList.contains('active');
+        document.querySelectorAll('.map-pin.active').forEach(function(p) { p.classList.remove('active'); });
+        if (!wasActive) pin.classList.add('active');
+      });
+
+      mapPinsEl.appendChild(pin);
+    });
+
+    document.addEventListener('click', function() {
+      document.querySelectorAll('.map-pin.active').forEach(function(p) { p.classList.remove('active'); });
+    });
+  }
+</script>
+
+</body>
+</html>
