@@ -59,6 +59,12 @@
 
   a { color: inherit; text-decoration: none; }
 
+  a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
   .wrap {
     max-width: 1180px;
     margin: 0 auto;
@@ -127,12 +133,14 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 0;
+    width: 100%;
     height: 1px;
     background: var(--ink);
-    transition: width 0.4s var(--ease);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s var(--ease);
   }
-  .nav-links a:hover::after { width: 100%; }
+  .nav-links a:hover::after { transform: scaleX(1); }
 
   /* ---------- hero ---------- */
   .hero {
@@ -297,9 +305,9 @@
     font-size: 0.76rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--ink-40);
+    color: var(--ink-60);
   }
-  .ticker-dot {
+  .ticker-set span.ticker-dot {
     color: var(--ink-15);
     font-size: 0.9rem;
   }
@@ -414,10 +422,25 @@
   }
   .map-pin {
     position: absolute;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transform: translate(-50%, -50%);
     z-index: 2;
   }
   .map-pin:focus { outline: none; }
+  .map-pin:focus-visible .pin-dot {
+    outline: 2px solid var(--blue);
+    outline-offset: 3px;
+    border-radius: 50%;
+  }
+  .map-pin:focus-visible .pin-tooltip {
+    opacity: 1;
+    transform: translate(-50%, 0);
+    pointer-events: auto;
+  }
   .pin-dot {
     display: block;
     width: 9px;
@@ -804,9 +827,9 @@
   }
   .footer-sub {
     font-family: var(--font-body);
-    font-weight: 400;
-    font-size: 1.1rem;
-    color: rgba(255,255,255,0.85);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--white);
     max-width: 44ch;
     margin: 24px auto 44px;
   }
@@ -884,9 +907,6 @@
     .hero-anchor { padding: 32px 24px; border-radius: 20px; }
     .hero h1 { white-space: normal; }
     .rotator { vertical-align: bottom; }
-    .stats { flex-direction: column; gap: 20px; }
-    .stat { padding-right: 0 !important; }
-    .stat + .stat { padding-left: 0 !important; border-left: none; border-top: 1px solid var(--ink-15); padding-top: 20px; }
     section { padding: 80px 0; }
     .work-grid { grid-template-columns: 1fr; }
     .map-wrap { aspect-ratio: 1 / 1.05; border-radius: 18px; }
@@ -916,6 +936,16 @@
     .nav-links { gap: 12px; }
     .nav-links a { font-size: 0.66rem; }
     .logo { font-size: 1rem; }
+  }
+
+  /* ---------- accessibility: reduced motion (global catch-all) ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 </style>
 </head>

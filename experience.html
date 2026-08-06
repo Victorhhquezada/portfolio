@@ -56,6 +56,12 @@
 
   a { color: inherit; text-decoration: none; }
 
+  a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
   .wrap {
     max-width: 980px;
     margin: 0 auto;
@@ -99,11 +105,13 @@
   }
   .nav-links a::after {
     content: ''; position: absolute; left: 0; bottom: 0;
-    width: 0; height: 1px; background: var(--ink);
-    transition: width 0.4s var(--ease);
+    width: 100%; height: 1px; background: var(--ink);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s var(--ease);
   }
-  .nav-links a:hover::after { width: 100%; }
-  .nav-links a.active::after { width: 100%; }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-links a.active::after { transform: scaleX(1); }
 
   /* ---------- header ---------- */
   .header {
@@ -374,8 +382,9 @@
   }
   .footer-sub {
     font-family: var(--font-body);
-    font-size: 1.05rem;
-    color: rgba(255,255,255,0.85);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--white);
     max-width: 40ch;
     margin: 20px auto 40px;
   }
@@ -449,6 +458,16 @@
     .nav-links a { font-size: 0.66rem; }
     .logo { font-size: 1rem; }
   }
+
+  /* ---------- accessibility: reduced motion (global catch-all) ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 </style>
 </head>
 <body>
@@ -490,7 +509,7 @@
         <div class="timeline-dot"></div>
         <div class="role-head">
           <div class="role-title">Community Lead</div>
-          <div class="role-dates">Oct 2025 — Present</div>
+          <div class="role-dates">Oct 2025 – Present</div>
         </div>
         <div class="role-meta">Provenance Blockchain Foundation <span>· Full-time</span></div>
         <ul class="role-bullets">
@@ -502,7 +521,7 @@
         <div class="timeline-dot"></div>
         <div class="role-head">
           <div class="role-title">Member, Marketing &amp; Community</div>
-          <div class="role-dates">Oct 2025 — Present</div>
+          <div class="role-dates">Oct 2025 – Present</div>
         </div>
         <div class="role-meta">Myosin <span>· Agency / Network</span></div>
         <ul class="role-bullets">
@@ -515,7 +534,7 @@
         <div class="timeline-dot"></div>
         <div class="role-head">
           <div class="role-title">Marketing &amp; Community Manager</div>
-          <div class="role-dates">Jan 2024 — Aug 2025</div>
+          <div class="role-dates">Jan 2024 – Aug 2025</div>
         </div>
         <div class="role-meta">Plume Network <span>· Full-time</span></div>
         <ul class="role-bullets">
@@ -534,7 +553,7 @@
         <div class="timeline-dot"></div>
         <div class="role-head">
           <div class="role-title">Community Manager LATAM</div>
-          <div class="role-dates">Jul 2022 — Jul 2023</div>
+          <div class="role-dates">Jul 2022 – Jul 2023</div>
         </div>
         <div class="role-meta">BNB Chain · Binance <span>· Full-time</span></div>
         <ul class="role-bullets">
@@ -549,7 +568,7 @@
         <div class="timeline-dot"></div>
         <div class="role-head">
           <div class="role-title">Crypto Community Manager</div>
-          <div class="role-dates">Oct 2020 — Apr 2022</div>
+          <div class="role-dates">Oct 2020 – Apr 2022</div>
         </div>
         <div class="role-meta">Bitso <span>· Full-time</span></div>
         <ul class="role-bullets">
@@ -565,7 +584,7 @@
         <div class="timeline-dot"></div>
         <div class="role-head">
           <div class="role-title">Project Manager</div>
-          <div class="role-dates">Jul 2020 — Oct 2020</div>
+          <div class="role-dates">Jul 2020 – Oct 2020</div>
         </div>
         <div class="role-meta">Vetta · Corporate Startup Generator <span>· Full-time</span></div>
         <ul class="role-bullets">
@@ -579,7 +598,7 @@
         <div class="timeline-dot"></div>
         <div class="role-head">
           <div class="role-title">Events &amp; Community Manager</div>
-          <div class="role-dates">Apr 2019 — Jul 2020</div>
+          <div class="role-dates">Apr 2019 – Jul 2020</div>
         </div>
         <div class="role-meta">Ironhack <span>· Full-time</span></div>
         <ul class="role-bullets">
@@ -594,7 +613,7 @@
         <div class="timeline-dot"></div>
         <div class="role-head">
           <div class="role-title">Project Manager</div>
-          <div class="role-dates">Dec 2018 — Jul 2020</div>
+          <div class="role-dates">Dec 2018 – Jul 2020</div>
         </div>
         <div class="role-meta">Hult Prize Foundation <span>· Part-time / Volunteer</span></div>
         <ul class="role-bullets">
@@ -607,7 +626,7 @@
         <div class="timeline-dot"></div>
         <div class="role-head">
           <div class="role-title">Community Programs Intern, LATAM</div>
-          <div class="role-dates">Feb 2018 — Dec 2020</div>
+          <div class="role-dates">Feb 2018 – Dec 2020</div>
         </div>
         <div class="role-meta">Techstars <span>· Internship</span></div>
         <ul class="role-bullets">
@@ -637,7 +656,7 @@
         </ul>
       </div>
       <div class="edu-card reveal">
-        <div class="edu-year">2016 — 2020</div>
+        <div class="edu-year">2016 – 2020</div>
         <div class="edu-title">B.A. Communication and Entertainment Business Management</div>
         <div class="edu-org">Escuela Bancaria y Comercial</div>
         <ul>
