@@ -168,6 +168,11 @@
     width: 100%;
     height: 100%;
     z-index: 0;
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-shapes { opacity: 1; transform: none; }
   }
   .hero-shapes svg {
     width: 100%;
@@ -247,6 +252,11 @@
     padding: 48px clamp(28px, 5vw, 64px);
     max-width: 800px;
     box-shadow: 0 30px 60px -20px rgba(13,13,13,0.12);
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-anchor { opacity: 1; transform: none; }
   }
   .hero h1 {
     font-family: var(--font-head);
@@ -298,6 +308,11 @@
     border-top: 1px solid var(--ink-15);
     border-bottom: 1px solid var(--ink-15);
     padding: 16px 0;
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ticker { opacity: 1; transform: none; }
   }
   .ticker-track {
     display: flex;
@@ -1476,7 +1491,24 @@
   </div>
 </footer>
 
+<script src="vendor/gsap/gsap.min.js"></script>
 <script>
+  // ---------- hero entrance (GSAP) ----------
+  (function() {
+    if (typeof gsap === 'undefined' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.hero-shapes, .hero-anchor, .ticker').forEach(function(el) {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+      return;
+    }
+
+    gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.15 })
+      .to('.hero-shapes', { opacity: 1, scale: 1, duration: 1.3, ease: 'power4.out' })
+      .to('.hero-anchor', { opacity: 1, y: 0, duration: 0.9 }, '-=0.9')
+      .to('.ticker', { opacity: 1, y: 0, duration: 0.7 }, '-=0.3');
+  })();
+
   // ---------- hero shape parallax ----------
   (function() {
     var heroEl = document.querySelector('.hero');
