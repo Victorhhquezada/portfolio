@@ -412,10 +412,71 @@
   }
 
   /* ---------- work ---------- */
-  .work-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  .work-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
     gap: 24px;
+    margin-bottom: 32px;
+  }
+  .work-ghost-title {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: clamp(1.5rem, 3vw, 2.3rem);
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .work-nav {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+  .work-counter {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    color: var(--ink-60);
+    white-space: nowrap;
+  }
+  .work-arrow {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--ink-15);
+    background: var(--base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--ink);
+    cursor: pointer;
+    transition: transform 0.3s var(--ease), border-color 0.3s var(--ease), background 0.3s var(--ease), color 0.3s var(--ease);
+  }
+  .work-arrow:hover:not(:disabled) {
+    border-color: var(--ink);
+    background: var(--ink);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+  .work-arrow:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+  .work-scroll {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 4px;
+  }
+  .work-scroll::-webkit-scrollbar { display: none; }
+  .work-scroll .card {
+    flex: 0 0 min(600px, 85vw);
+    scroll-snap-align: start;
   }
   .card {
     border: 1px solid var(--ink-15);
@@ -989,7 +1050,8 @@
     .hero h1 { white-space: normal; }
     .rotator { vertical-align: bottom; }
     section { padding: 80px 0; }
-    .work-grid { grid-template-columns: 1fr; }
+    .work-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .work-scroll .card { flex-basis: 88vw; }
     .map-wrap { aspect-ratio: 1 / 1.05; border-radius: 18px; }
     .pin-tooltip { max-width: 180px; padding: 12px 14px; }
     .map-legend { gap: 20px; }
@@ -1162,29 +1224,37 @@
 <section id="work">
   <div class="wrap">
     <div class="section-label reveal">Case Studies</div>
-    <div class="work-grid">
-      <div class="card stagger-card">
+    <div class="work-header">
+      <div class="work-ghost-title" id="workGhostTitle">Plume Goon: Alter Ego Account</div>
+      <div class="work-nav">
+        <div class="work-counter"><span id="workCounterCurrent">01</span> / <span id="workCounterTotal">04</span></div>
+        <button type="button" class="work-arrow" id="workPrev" aria-label="Previous case study" disabled>←</button>
+        <button type="button" class="work-arrow" id="workNext" aria-label="Next case study">→</button>
+      </div>
+    </div>
+    <div class="work-scroll" id="workScroll">
+      <div class="card stagger-card" data-title="Plume Goon: Alter Ego Account">
         <div class="card-dot"></div>
         <div class="card-tag">Plume Network · Brand · 2024–2025</div>
         <div class="card-title">Plume Goon: Alter Ego Account</div>
         <p class="card-desc">Created and scaled a crypto alter-ego account combining memes, culture, and authentic Web3 humor. Built a distinct brand voice that made Plume feel human in a space full of corporate accounts. Zero paid promotion.</p>
         <div class="card-metrics">250K+ organic followers</div>
       </div>
-      <div class="card stagger-card">
+      <div class="card stagger-card" data-title="International Conferences &amp; GTM">
         <div class="card-dot"></div>
         <div class="card-tag">Plume Network · Events · Global</div>
         <div class="card-title">International Conferences &amp; GTM</div>
         <p class="card-desc">End-to-end event management across Token2049 (Dubai + Singapore), ETH Denver, Devcon Bangkok, ETHCC Brussels, Korea Blockchain Week Seoul, Permissionless NYC, Consensus Austin, and more.</p>
         <div class="card-metrics">10+ global events &nbsp;·&nbsp; 4 continents</div>
       </div>
-      <div class="card stagger-card">
+      <div class="card stagger-card" data-title="0 → 1M+ Community Growth">
         <div class="card-dot"></div>
         <div class="card-tag">Plume Network · Community · 2024–2025</div>
         <div class="card-title">0 → 1M+ Community Growth</div>
         <p class="card-desc">Built one of the most active RWA communities in Web3 from scratch. Testnet campaign, TGE, and mainnet launch, all community-led. No paid acquisition, no shortcuts.</p>
         <div class="card-metrics">1M+ Twitter &nbsp;·&nbsp; 400K+ Discord &nbsp;·&nbsp; $0 budget</div>
       </div>
-      <div class="card stagger-card">
+      <div class="card stagger-card" data-title="BNB Chain LATAM Expansion">
         <div class="card-dot"></div>
         <div class="card-tag">BNB Chain LATAM · Growth · 2022–2023</div>
         <div class="card-title">BNB Chain LATAM Expansion</div>
@@ -1682,7 +1752,7 @@
 
   // ---------- staggered card-grid reveal (GSAP + ScrollTrigger) ----------
   (function() {
-    var grids = document.querySelectorAll('.work-grid');
+    var grids = document.querySelectorAll('.work-scroll');
     if (!grids.length) return;
 
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1712,6 +1782,95 @@
         }
       });
     });
+  })();
+
+  // ---------- horizontal snap-scroll gallery (ghost title + counter + arrows) ----------
+  (function() {
+    var scroller = document.getElementById('workScroll');
+    var ghostTitle = document.getElementById('workGhostTitle');
+    var counterCurrent = document.getElementById('workCounterCurrent');
+    var counterTotal = document.getElementById('workCounterTotal');
+    var prevBtn = document.getElementById('workPrev');
+    var nextBtn = document.getElementById('workNext');
+    if (!scroller || !ghostTitle) return;
+
+    var cards = Array.prototype.slice.call(scroller.querySelectorAll('.card'));
+    if (!cards.length) return;
+
+    if (counterTotal) counterTotal.textContent = ('0' + cards.length).slice(-2);
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var hasGsap = typeof gsap !== 'undefined' && !reduceMotion;
+    var activeIndex = -1;
+    var ticking = false;
+
+    function closestIndex() {
+      var center = scroller.scrollLeft + scroller.clientWidth / 2;
+      var best = 0, bestDist = Infinity;
+      cards.forEach(function(card, i) {
+        var cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        var dist = Math.abs(cardCenter - center);
+        if (dist < bestDist) { bestDist = dist; best = i; }
+      });
+      return best;
+    }
+
+    function setActive(index, animateTitle) {
+      if (index === activeIndex) return;
+      activeIndex = index;
+      var title = cards[index].getAttribute('data-title') || '';
+      if (counterCurrent) counterCurrent.textContent = ('0' + (index + 1)).slice(-2);
+
+      if (hasGsap && animateTitle !== false) {
+        gsap.to(ghostTitle, {
+          opacity: 0,
+          y: -8,
+          duration: 0.2,
+          ease: 'power2.in',
+          onComplete: function() {
+            ghostTitle.textContent = title;
+            gsap.fromTo(ghostTitle, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' });
+          }
+        });
+      } else {
+        ghostTitle.textContent = title;
+      }
+
+      if (prevBtn) prevBtn.disabled = index === 0;
+      if (nextBtn) nextBtn.disabled = index === cards.length - 1;
+    }
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function() {
+        setActive(closestIndex());
+        ticking = false;
+      });
+    }
+
+    function scrollToIndex(index) {
+      index = Math.max(0, Math.min(cards.length - 1, index));
+      var card = cards[index];
+      var target = card.offsetLeft - (scroller.clientWidth - card.offsetWidth) / 2;
+      if (hasGsap) {
+        scroller.style.scrollSnapType = 'none';
+        gsap.to(scroller, {
+          scrollLeft: target,
+          duration: 0.6,
+          ease: 'power3.inOut',
+          onComplete: function() { scroller.style.scrollSnapType = ''; }
+        });
+      } else {
+        scroller.scrollTo({ left: target, behavior: reduceMotion ? 'auto' : 'smooth' });
+      }
+    }
+
+    scroller.addEventListener('scroll', onScroll, { passive: true });
+    if (prevBtn) prevBtn.addEventListener('click', function() { scrollToIndex(activeIndex - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function() { scrollToIndex(activeIndex + 1); });
+
+    setActive(0, false);
   })();
 
   // ---------- headline word rotator ----------
