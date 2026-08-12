@@ -541,6 +541,50 @@
     padding-top: 20px;
     border-top: 1px solid var(--ink-08);
   }
+  .explore-badge {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: var(--blue);
+    pointer-events: none;
+    z-index: 90;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+  }
+  .explore-badge.is-visible {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .explore-badge-ring {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .explore-badge-ring text {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    fill: var(--base);
+    text-transform: uppercase;
+  }
+  .explore-badge-arrow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--base);
+    font-size: 1.5rem;
+    font-family: var(--font-head);
+    line-height: 1;
+  }
+  @media (hover: none), (prefers-reduced-motion: reduce) {
+    .explore-badge { display: none; }
+  }
 
   /* ---------- map ---------- */
   .map-wrap {
@@ -1222,6 +1266,17 @@
 </section>
 
 <section id="work">
+  <div class="explore-badge" id="exploreBadge" aria-hidden="true">
+    <svg class="explore-badge-ring" viewBox="0 0 120 120">
+      <defs>
+        <path id="exploreBadgeCircle" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"></path>
+      </defs>
+      <text>
+        <textPath href="#exploreBadgeCircle" startOffset="0%">VIEW CASE STUDY &#8226; VIEW CASE STUDY &#8226; VIEW CASE STUDY &#8226; </textPath>
+      </text>
+    </svg>
+    <span class="explore-badge-arrow">&#8599;</span>
+  </div>
   <div class="wrap">
     <div class="section-label reveal">Case Studies</div>
     <div class="work-header">
@@ -1871,6 +1926,49 @@
     if (nextBtn) nextBtn.addEventListener('click', function() { scrollToIndex(activeIndex + 1); });
 
     setActive(0, false);
+  })();
+
+  // ---------- rotating "explore" cursor badge ----------
+  (function() {
+    var badge = document.getElementById('exploreBadge');
+    var ring = badge ? badge.querySelector('.explore-badge-ring') : null;
+    var cards = document.querySelectorAll('#work .card');
+    if (!badge || !cards.length) return;
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var hasHover = window.matchMedia('(hover: hover)').matches;
+    if (reduceMotion || !hasHover) return;
+
+    var hasGsap = typeof gsap !== 'undefined';
+    var moveX, moveY;
+    if (hasGsap) {
+      moveX = gsap.quickTo(badge, 'left', { duration: 0.45, ease: 'power3' });
+      moveY = gsap.quickTo(badge, 'top', { duration: 0.45, ease: 'power3' });
+      gsap.to(ring, { rotation: 360, duration: 9, ease: 'none', repeat: -1, transformOrigin: '50% 50%' });
+    }
+
+    function moveBadge(e) {
+      if (hasGsap) {
+        moveX(e.clientX);
+        moveY(e.clientY);
+      } else {
+        badge.style.left = e.clientX + 'px';
+        badge.style.top = e.clientY + 'px';
+      }
+    }
+
+    cards.forEach(function(card) {
+      card.addEventListener('mouseenter', function(e) {
+        badge.style.left = e.clientX + 'px';
+        badge.style.top = e.clientY + 'px';
+        badge.classList.add('is-visible');
+        window.addEventListener('mousemove', moveBadge);
+      });
+      card.addEventListener('mouseleave', function() {
+        badge.classList.remove('is-visible');
+        window.removeEventListener('mousemove', moveBadge);
+      });
+    });
   })();
 
   // ---------- headline word rotator ----------
