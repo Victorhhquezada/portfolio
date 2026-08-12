@@ -147,7 +147,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 200;
     background: transparent;
     box-shadow: none;
     transition: background 0.4s var(--ease), box-shadow 0.4s var(--ease), padding 0.4s var(--ease);
@@ -174,32 +174,118 @@
     font-size: 1.15rem;
     letter-spacing: -0.02em;
   }
-  .nav-links {
+  .menu-toggle {
     display: flex;
-    gap: 36px;
-    list-style: none;
-  }
-  .nav-links a {
+    align-items: center;
+    gap: 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
     font-family: var(--font-mono);
     font-size: 0.78rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    position: relative;
-    padding-bottom: 3px;
+    color: var(--ink);
+    padding: 4px 0;
   }
-  .nav-links a::after {
-    content: '';
+  .menu-toggle-icon {
+    width: 26px;
+    height: 16px;
+    position: relative;
+  }
+  .menu-toggle-icon span {
     position: absolute;
     left: 0;
-    bottom: 0;
     width: 100%;
     height: 1px;
     background: var(--ink);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s var(--ease);
+    transition: transform 0.4s var(--ease), top 0.3s var(--ease), background 0.3s var(--ease);
   }
-  .nav-links a:hover::after { transform: scaleX(1); }
+  .menu-toggle-icon span:nth-child(1) { top: 2px; }
+  .menu-toggle-icon span:nth-child(2) { top: 14px; }
+  .menu-toggle.is-open .menu-toggle-icon span:nth-child(1) { top: 8px; transform: rotate(45deg); }
+  .menu-toggle.is-open .menu-toggle-icon span:nth-child(2) { top: 8px; transform: rotate(-45deg); }
+
+  .nav.menu-open { background: transparent !important; box-shadow: none !important; }
+  .nav.menu-open .logo,
+  .nav.menu-open .menu-toggle { color: var(--base); }
+  .nav.menu-open .menu-toggle-icon span { background: var(--base); }
+
+  .menu-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 150;
+    background: var(--ink);
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+  }
+  .menu-overlay.is-open {
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .menu-overlay-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    height: 100%;
+    padding: 140px 32px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .menu-links { list-style: none; }
+  .menu-link-item { overflow: hidden; }
+  .menu-links a {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(245, 243, 238, 0.12);
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: clamp(2.2rem, 6vw, 4.4rem);
+    letter-spacing: -0.02em;
+    color: var(--base);
+    transition: color 0.3s var(--ease), padding-left 0.3s var(--ease);
+  }
+  .menu-link-index {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    color: rgba(245, 243, 238, 0.4);
+  }
+  .menu-link-item:nth-child(1) a:hover { color: var(--blue); padding-left: 16px; }
+  .menu-link-item:nth-child(2) a:hover { color: var(--coral); padding-left: 16px; }
+  .menu-link-item:nth-child(3) a:hover { color: var(--yellow); padding-left: 16px; }
+  .menu-link-item:nth-child(4) a:hover { color: var(--blue); padding-left: 16px; }
+  .menu-overlay-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 32px;
+  }
+  .menu-social {
+    display: flex;
+    gap: 24px;
+  }
+  .menu-social a {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(245, 243, 238, 0.6);
+    transition: color 0.3s var(--ease);
+  }
+  .menu-social a:hover { color: var(--base); }
+  .menu-clock {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(245, 243, 238, 0.6);
+  }
 
   /* ---------- hero ---------- */
   .hero {
@@ -1096,7 +1182,9 @@
   @media (max-width: 768px) {
     .wrap { padding: 0 20px; }
     .nav-inner { padding: 20px; }
-    .nav-links { gap: 20px; }
+    .menu-overlay-inner { padding: 110px 20px 40px; }
+    .menu-links a { font-size: clamp(1.8rem, 8vw, 2.6rem); padding: 14px 0; }
+    .menu-overlay-footer { flex-direction: column; align-items: flex-start; gap: 16px; }
     .hero { padding: 120px 0 60px; }
     .hero-content { padding: 0 20px; }
     .hero-anchor { padding: 32px 24px; border-radius: 20px; }
@@ -1129,8 +1217,7 @@
 
   @media (max-width: 400px) {
     .nav-inner { padding: 16px; }
-    .nav-links { gap: 12px; }
-    .nav-links a { font-size: 0.66rem; }
+    .menu-toggle-label { display: none; }
     .logo { font-size: 1rem; }
   }
 
@@ -1158,14 +1245,35 @@
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="#" class="logo">victorhq</a>
-    <ul class="nav-links">
-      <li><a href="#work">Work</a></li>
-      <li><a href="experience.html">Experience</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="menuOverlay">
+      <span class="menu-toggle-label" id="menuToggleLabel">Menu</span>
+      <span class="menu-toggle-icon" aria-hidden="true">
+        <span></span>
+        <span></span>
+      </span>
+    </button>
   </div>
 </nav>
+
+<div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+  <div class="menu-overlay-inner">
+    <ul class="menu-links">
+      <li class="menu-link-item"><a href="#work" data-menu-link><span class="menu-link-index">01</span><span class="menu-link-text">Work</span></a></li>
+      <li class="menu-link-item"><a href="experience.html" data-menu-link><span class="menu-link-index">02</span><span class="menu-link-text">Experience</span></a></li>
+      <li class="menu-link-item"><a href="#about" data-menu-link><span class="menu-link-index">03</span><span class="menu-link-text">About</span></a></li>
+      <li class="menu-link-item"><a href="#contact" data-menu-link><span class="menu-link-index">04</span><span class="menu-link-text">Contact</span></a></li>
+    </ul>
+    <div class="menu-overlay-footer">
+      <div class="menu-social">
+        <a href="https://x.com/VictorhqCrypto" target="_blank" rel="noopener">X</a>
+        <a href="https://www.linkedin.com/in/victorhhquezada" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/Victorhhquezada" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://t.me/victorhqcrypto" target="_blank" rel="noopener">Telegram</a>
+      </div>
+      <div class="menu-clock">Mexico City <span id="menuClockTime">--:--</span></div>
+    </div>
+  </div>
+</div>
 
 <section class="hero">
   <div class="hero-shapes" aria-hidden="true">
@@ -1801,6 +1909,97 @@
     }
   }
   window.addEventListener('scroll', onScroll, { passive: true });
+
+  // ---------- full-screen nav menu ----------
+  (function() {
+    var toggle = document.getElementById('menuToggle');
+    var toggleLabel = document.getElementById('menuToggleLabel');
+    var overlay = document.getElementById('menuOverlay');
+    if (!nav || !toggle || !overlay) return;
+
+    var linkItems = overlay.querySelectorAll('.menu-link-item');
+    var isOpen = false;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var hasGsap = typeof gsap !== 'undefined';
+    var tl;
+
+    if (hasGsap && !reduceMotion) {
+      gsap.set(linkItems, { yPercent: 100 });
+      tl = gsap.timeline({ paused: true })
+        .to(overlay, { opacity: 1, duration: 0.5, ease: 'power2.out' })
+        .to(linkItems, { yPercent: 0, duration: 0.7, stagger: 0.07, ease: 'power4.out' }, '-=0.2');
+    }
+
+    function openMenu() {
+      isOpen = true;
+      overlay.classList.add('is-open');
+      overlay.setAttribute('aria-hidden', 'false');
+      nav.classList.add('menu-open');
+      toggle.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      if (toggleLabel) toggleLabel.textContent = 'Close';
+      document.body.style.overflow = 'hidden';
+      if (tl) {
+        tl.timeScale(1);
+        tl.play();
+      } else {
+        overlay.style.opacity = '1';
+      }
+      var firstLink = overlay.querySelector('.menu-links a');
+      if (firstLink) firstLink.focus();
+    }
+
+    function closeMenu() {
+      isOpen = false;
+      overlay.setAttribute('aria-hidden', 'true');
+      nav.classList.remove('menu-open');
+      toggle.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      if (toggleLabel) toggleLabel.textContent = 'Menu';
+      document.body.style.overflow = '';
+      if (tl) {
+        tl.timeScale(1.6);
+        tl.eventCallback('onReverseComplete', function() {
+          overlay.classList.remove('is-open');
+        });
+        tl.reverse();
+      } else {
+        overlay.style.opacity = '0';
+        overlay.classList.remove('is-open');
+      }
+      toggle.focus();
+    }
+
+    toggle.addEventListener('click', function() {
+      if (isOpen) { closeMenu(); } else { openMenu(); }
+    });
+
+    overlay.querySelectorAll('[data-menu-link]').forEach(function(link) {
+      link.addEventListener('click', function() {
+        if (isOpen) closeMenu();
+      });
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && isOpen) closeMenu();
+    });
+  })();
+
+  // ---------- menu clock (Mexico City time) ----------
+  (function() {
+    var el = document.getElementById('menuClockTime');
+    if (!el) return;
+    function update() {
+      el.textContent = new Date().toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+        timeZone: 'America/Mexico_City'
+      });
+    }
+    update();
+    setInterval(update, 30000);
+  })();
 
   // scroll reveal
   var revealEls = document.querySelectorAll('.reveal');
