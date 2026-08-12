@@ -379,6 +379,7 @@
     width: 100%;
   }
   .hero-anchor {
+    position: relative;
     background: rgba(245, 243, 238, 0.92);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
@@ -392,6 +393,27 @@
   @media (prefers-reduced-motion: reduce) {
     .hero-anchor { opacity: 1; transform: none; }
   }
+  .hero-anchor.is-draggable { cursor: grab; }
+  .hero-anchor.is-draggable.is-dragging { cursor: grabbing; }
+  .hero-drag-hint {
+    position: absolute;
+    top: -16px;
+    right: 28px;
+    background: var(--ink);
+    color: var(--base);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 7px 14px;
+    border-radius: 20px;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+  }
+  .hero-drag-hint.is-visible { opacity: 1; transform: translateY(0); }
+  .hero-drag-hint.is-hidden { opacity: 0 !important; transform: translateY(6px) !important; }
   .hero h1 {
     font-family: var(--font-head);
     font-weight: 700;
@@ -1318,7 +1340,8 @@
   </div>
 
   <div class="hero-content">
-    <div class="hero-anchor">
+    <div class="hero-anchor" id="heroAnchor">
+      <div class="hero-drag-hint" id="heroDragHint" aria-hidden="true">Drag to move</div>
       <h1>Full-stack <span class="rotator" id="rotator"><span class="rotator-track" id="rotatorTrack"></span></span> operator.</h1>
       <p class="hero-sub">7+ years building brands, communities, and growth engines from zero across Web3 and beyond.</p>
     </div>
@@ -1799,6 +1822,8 @@
 <script src="vendor/gsap/gsap.min.js"></script>
 <script src="vendor/gsap/ScrollTrigger.min.js"></script>
 <script src="vendor/gsap/SplitText.min.js"></script>
+<script src="vendor/gsap/Draggable.min.js"></script>
+<script src="vendor/gsap/InertiaPlugin.min.js"></script>
 <script>
   // ---------- hero entrance (GSAP) ----------
   function startHeroEntrance() {
@@ -1894,6 +1919,38 @@
       requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
+  })();
+
+  // ---------- draggable hero card ----------
+  (function() {
+    var heroAnchor = document.getElementById('heroAnchor');
+    var heroEl = document.querySelector('.hero');
+    var dragHint = document.getElementById('heroDragHint');
+    if (!heroAnchor || !heroEl) return;
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    var hasGsap = typeof gsap !== 'undefined' && typeof Draggable !== 'undefined' && typeof InertiaPlugin !== 'undefined';
+    if (reduceMotion || !finePointer || !hasGsap) return;
+
+    gsap.registerPlugin(Draggable, InertiaPlugin);
+    heroAnchor.classList.add('is-draggable');
+
+    if (dragHint) {
+      setTimeout(function() { dragHint.classList.add('is-visible'); }, 1600);
+    }
+
+    Draggable.create(heroAnchor, {
+      type: 'x,y',
+      bounds: heroEl,
+      inertia: true,
+      edgeResistance: 0.65,
+      onPress: function() { heroAnchor.classList.add('is-dragging'); },
+      onRelease: function() { heroAnchor.classList.remove('is-dragging'); },
+      onDragStart: function() {
+        if (dragHint) dragHint.classList.add('is-hidden');
+      }
+    });
   })();
 
   // nav scroll state
