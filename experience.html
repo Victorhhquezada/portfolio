@@ -404,6 +404,13 @@
     border-radius: 100px;
     padding: 6px 14px;
   }
+  .stagger-card {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .stagger-card { opacity: 1; transform: none; }
+  }
 
   /* ---------- footer ---------- */
   .footer {
@@ -730,7 +737,7 @@
   <div class="wrap">
     <div class="section-label reveal">Skills &amp; Tools</div>
     <div class="skills-grid">
-      <div class="reveal">
+      <div class="stagger-card">
         <div class="skill-group-name">Growth &amp; GTM</div>
         <div class="skill-tags">
           <span class="skill-tag">GTM strategy</span>
@@ -740,7 +747,7 @@
           <span class="skill-tag">Growth dashboards</span>
         </div>
       </div>
-      <div class="reveal">
+      <div class="stagger-card">
         <div class="skill-group-name">AI &amp; Automation</div>
         <div class="skill-tags">
           <span class="skill-tag">Claude Code</span>
@@ -750,7 +757,7 @@
           <span class="skill-tag">AI content generation</span>
         </div>
       </div>
-      <div class="reveal">
+      <div class="stagger-card">
         <div class="skill-group-name">Partnerships &amp; Community</div>
         <div class="skill-tags">
           <span class="skill-tag">Ecosystem management</span>
@@ -760,7 +767,7 @@
           <span class="skill-tag">Moderator team management</span>
         </div>
       </div>
-      <div class="reveal">
+      <div class="stagger-card">
         <div class="skill-group-name">Analytics &amp; Tracking</div>
         <div class="skill-tags">
           <span class="skill-tag">Google Analytics</span>
@@ -770,7 +777,7 @@
           <span class="skill-tag">Hotjar</span>
         </div>
       </div>
-      <div class="reveal">
+      <div class="stagger-card">
         <div class="skill-group-name">Content &amp; Brand</div>
         <div class="skill-tags">
           <span class="skill-tag">Brand voice &amp; narrative</span>
@@ -784,7 +791,7 @@
           <span class="skill-tag">CapCut</span>
         </div>
       </div>
-      <div class="reveal">
+      <div class="stagger-card">
         <div class="skill-group-name">Productivity &amp; Collaboration</div>
         <div class="skill-tags">
           <span class="skill-tag">Google Workspace</span>
@@ -796,7 +803,7 @@
           <span class="skill-tag">Airtable</span>
         </div>
       </div>
-      <div class="reveal">
+      <div class="stagger-card">
         <div class="skill-group-name">Marketing Automation &amp; CRM</div>
         <div class="skill-tags">
           <span class="skill-tag">Salesforce</span>
@@ -810,7 +817,7 @@
           <span class="skill-tag">Attio</span>
         </div>
       </div>
-      <div class="reveal">
+      <div class="stagger-card">
         <div class="skill-group-name">Paid Ads &amp; Social</div>
         <div class="skill-tags">
           <span class="skill-tag">Facebook Ads</span>
@@ -819,7 +826,7 @@
           <span class="skill-tag">LinkedIn Ads</span>
         </div>
       </div>
-      <div class="reveal">
+      <div class="stagger-card">
         <div class="skill-group-name">Web / Code</div>
         <div class="skill-tags">
           <span class="skill-tag">HTML</span>
@@ -850,6 +857,8 @@
   </div>
 </footer>
 
+<script src="vendor/gsap/gsap.min.js"></script>
+<script src="vendor/gsap/ScrollTrigger.min.js"></script>
 <script>
   var revealEls = document.querySelectorAll('.reveal');
   var io = new IntersectionObserver(function(entries) {
@@ -862,6 +871,37 @@
     });
   }, { threshold: 0.1 });
   revealEls.forEach(function(el) { io.observe(el); });
+
+  // ---------- staggered card-grid reveal (GSAP + ScrollTrigger) ----------
+  (function() {
+    var grid = document.querySelector('.skills-grid');
+    if (!grid) return;
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' || reduceMotion) {
+      grid.querySelectorAll('.stagger-card').forEach(function(el) {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+      return;
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    var cards = grid.querySelectorAll('.stagger-card');
+    gsap.to(cards, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: 'power3.out',
+      stagger: 0.08,
+      scrollTrigger: {
+        trigger: grid,
+        start: 'top 85%',
+        once: true
+      }
+    });
+  })();
 </script>
 
 </body>
