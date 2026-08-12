@@ -466,6 +466,14 @@
     border: 1px solid var(--ink-15);
     border-radius: 100px;
     padding: 6px 14px;
+    cursor: default;
+    transition: background 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease), transform 0.3s var(--ease);
+  }
+  .skill-tag:hover {
+    background: var(--ink);
+    color: var(--base);
+    border-color: var(--ink);
+    transform: translateY(-2px);
   }
   .stagger-card {
     opacity: 0;
