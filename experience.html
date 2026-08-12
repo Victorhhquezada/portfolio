@@ -24,6 +24,16 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://victorhq.com/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "victorhq", "item": "https://victorhq.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Experience", "item": "https://victorhq.com/experience.html" }
+  ]
+}
+</script>
 <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
 <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
@@ -128,6 +138,26 @@
   .header {
     padding: 160px 0 80px;
   }
+  .breadcrumb {
+    margin-bottom: 20px;
+  }
+  .breadcrumb ol {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-40);
+  }
+  .breadcrumb a {
+    color: var(--ink-60);
+    transition: color 0.3s var(--ease);
+  }
+  .breadcrumb a:hover { color: var(--ink); }
+  .breadcrumb li[aria-current="page"] { color: var(--ink-40); }
   .eyebrow {
     display: inline-block;
     font-family: var(--font-mono);
@@ -497,6 +527,13 @@
 
 <header class="header">
   <div class="wrap">
+    <nav class="breadcrumb reveal" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">victorhq</a></li>
+        <li aria-hidden="true">/</li>
+        <li aria-current="page">Experience</li>
+      </ol>
+    </nav>
     <span class="eyebrow reveal">Curriculum Vitae</span>
     <h1 class="reveal">7+ years building communities that compound.</h1>
     <p class="header-sub reveal">Community Lead, Marketing Operator, and GTM Strategist across Web3 and fintech. Mexico City. Bilingual EN/ES.</p>
