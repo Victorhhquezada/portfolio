@@ -377,6 +377,69 @@
     background: var(--ink-40);
   }
 
+  /* ---------- competencies ---------- */
+  .comp-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .comp-row {
+    display: grid;
+    grid-template-columns: 56px minmax(220px, 320px) 1fr;
+    gap: 24px;
+    align-items: baseline;
+    padding: 28px 0;
+    border-top: 1px solid var(--ink-08);
+  }
+  .comp-row:last-child {
+    border-bottom: 1px solid var(--ink-08);
+  }
+  .comp-index {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    color: var(--ink-40);
+  }
+  .comp-name {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+  }
+  .comp-desc {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: var(--ink-60);
+  }
+
+  /* ---------- toolkit ---------- */
+  .toolkit-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--ink-08);
+    border: 1px solid var(--ink-08);
+  }
+  .toolkit-item {
+    background: var(--base);
+    padding: 28px 24px;
+  }
+  .toolkit-name {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+  }
+  .toolkit-desc {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-60);
+  }
+
   /* ---------- skills ---------- */
   .skills-grid {
     display: grid;
@@ -496,6 +559,9 @@
     .timeline-dot { left: -32px; }
     .role-head { flex-direction: column; align-items: flex-start; gap: 4px; }
     .edu-grid { grid-template-columns: 1fr; }
+    .comp-row { grid-template-columns: 1fr; gap: 6px; padding: 22px 0; }
+    .comp-index { order: -1; }
+    .toolkit-grid { grid-template-columns: repeat(2, 1fr); }
     .skills-grid { grid-template-columns: 1fr; gap: 28px; }
     .footer-links { flex-direction: column; gap: 16px; }
   }
@@ -705,6 +771,54 @@
   </div>
 </section>
 
+<section id="competencies">
+  <div class="wrap">
+    <div class="section-label reveal">Core Competencies</div>
+    <div class="comp-list">
+      <div class="comp-row stagger-card">
+        <div class="comp-index">01</div>
+        <div class="comp-name">Community Growth at Scale</div>
+        <div class="comp-desc">Building Web3 communities from zero to seven-figure followings without paid acquisition &mdash; through authentic voice, consistent execution, and zero shortcuts.</div>
+      </div>
+      <div class="comp-row stagger-card">
+        <div class="comp-index">02</div>
+        <div class="comp-name">Global Event GTM &amp; Activations</div>
+        <div class="comp-desc">Owning international conference presence and launch events end-to-end &mdash; from Token2049 to Devcon to Consensus, across four continents.</div>
+      </div>
+      <div class="comp-row stagger-card">
+        <div class="comp-index">03</div>
+        <div class="comp-name">Brand Voice &amp; Culture Building</div>
+        <div class="comp-desc">Crafting distinct, human brand personalities that cut through corporate noise and make a project feel real in crypto-native spaces.</div>
+      </div>
+      <div class="comp-row stagger-card">
+        <div class="comp-index">04</div>
+        <div class="comp-name">LATAM Market Expansion</div>
+        <div class="comp-desc">Leading regional growth across 7+ countries &mdash; translating global strategy into locally resonant, bilingual community programs.</div>
+      </div>
+      <div class="comp-row stagger-card">
+        <div class="comp-index">05</div>
+        <div class="comp-name">RWA &times; TradFi Positioning</div>
+        <div class="comp-desc">Helping serious financial products find their footing in crypto-native communities, and helping those communities take TradFi seriously.</div>
+      </div>
+      <div class="comp-row stagger-card">
+        <div class="comp-index">06</div>
+        <div class="comp-name">Community-Led Token Launches</div>
+        <div class="comp-desc">Running testnet-to-mainnet campaigns &mdash; testnet, TGE, and mainnet &mdash; entirely community-led with zero paid acquisition.</div>
+      </div>
+      <div class="comp-row stagger-card">
+        <div class="comp-index">07</div>
+        <div class="comp-name">Cross-functional &amp; Partner Alignment</div>
+        <div class="comp-desc">Coordinating founders, marketing, and ecosystem partners to keep growth initiatives moving in the same direction.</div>
+      </div>
+      <div class="comp-row stagger-card">
+        <div class="comp-index">08</div>
+        <div class="comp-name">GTM Automation &amp; AI-Enabled Workflows</div>
+        <div class="comp-desc">Building automation- and AI-driven systems &mdash; like this site &mdash; to scale outbound, content, and growth operations.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="education">
   <div class="wrap">
     <div class="section-label reveal">Education</div>
@@ -728,6 +842,66 @@
           <li>Business administration and finance: financial management, entrepreneurship</li>
           <li>Entertainment industry management: distribution, events, commercialization</li>
         </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="toolkit">
+  <div class="wrap">
+    <div class="section-label reveal">My Toolkit</div>
+    <div class="toolkit-grid">
+      <div class="toolkit-item stagger-card">
+        <div class="toolkit-name">Figma</div>
+        <div class="toolkit-desc">Light Design &amp; Mockups</div>
+      </div>
+      <div class="toolkit-item stagger-card">
+        <div class="toolkit-name">Claude</div>
+        <div class="toolkit-desc">Site Build &amp; GTM Ops</div>
+      </div>
+      <div class="toolkit-item stagger-card">
+        <div class="toolkit-name">ChatGPT</div>
+        <div class="toolkit-desc">Content &amp; Research</div>
+      </div>
+      <div class="toolkit-item stagger-card">
+        <div class="toolkit-name">Gemini</div>
+        <div class="toolkit-desc">Ideation &amp; Research</div>
+      </div>
+      <div class="toolkit-item stagger-card">
+        <div class="toolkit-name">VS Code</div>
+        <div class="toolkit-desc">Site &amp; Workflow Tooling</div>
+      </div>
+      <div class="toolkit-item stagger-card">
+        <div class="toolkit-name">FigJam</div>
+        <div class="toolkit-desc">Workspace &amp; Planning</div>
+      </div>
+      <div class="toolkit-item stagger-card">
+        <div class="toolkit-name">X / Twitter</div>
+        <div class="toolkit-desc">Community &amp; Distribution</div>
+      </div>
+      <div class="toolkit-item stagger-card">
+        <div class="toolkit-name">Discord</div>
+        <div class="toolkit-desc">Community Management</div>
+      </div>
+      <div class="toolkit-item stagger-card">
+        <div class="toolkit-name">Telegram</div>
+        <div class="toolkit-desc">Direct Community Outreach</div>
+      </div>
+      <div class="toolkit-item stagger-card">
+        <div class="toolkit-name">PostHog</div>
+        <div class="toolkit-desc">Analytics &amp; Product Insights</div>
+      </div>
+      <div class="toolkit-item stagger-card">
+        <div class="toolkit-name">Notion</div>
+        <div class="toolkit-desc">Docs &amp; Knowledge Base</div>
+      </div>
+      <div class="toolkit-item stagger-card">
+        <div class="toolkit-name">Slack</div>
+        <div class="toolkit-desc">Team Communication</div>
+      </div>
+      <div class="toolkit-item stagger-card">
+        <div class="toolkit-name">Clay</div>
+        <div class="toolkit-desc">GTM Automation &amp; Enrichment</div>
       </div>
     </div>
   </div>
@@ -874,12 +1048,12 @@
 
   // ---------- staggered card-grid reveal (GSAP + ScrollTrigger) ----------
   (function() {
-    var grid = document.querySelector('.skills-grid');
-    if (!grid) return;
+    var grids = document.querySelectorAll('.skills-grid, .comp-list, .toolkit-grid');
+    if (!grids.length) return;
 
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' || reduceMotion) {
-      grid.querySelectorAll('.stagger-card').forEach(function(el) {
+      document.querySelectorAll('.stagger-card').forEach(function(el) {
         el.style.opacity = '1';
         el.style.transform = 'none';
       });
@@ -888,18 +1062,20 @@
 
     gsap.registerPlugin(ScrollTrigger);
 
-    var cards = grid.querySelectorAll('.stagger-card');
-    gsap.to(cards, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      ease: 'power3.out',
-      stagger: 0.08,
-      scrollTrigger: {
-        trigger: grid,
-        start: 'top 85%',
-        once: true
-      }
+    grids.forEach(function(grid) {
+      var cards = grid.querySelectorAll('.stagger-card');
+      gsap.to(cards, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+        stagger: 0.08,
+        scrollTrigger: {
+          trigger: grid,
+          start: 'top 85%',
+          once: true
+        }
+      });
     });
   })();
 </script>
