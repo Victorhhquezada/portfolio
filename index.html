@@ -798,6 +798,9 @@
     font-size: 1rem;
     line-height: 1.65;
   }
+  .case-modal-body p + p {
+    margin-top: 16px;
+  }
   .case-modal-metrics {
     font-family: var(--font-mono);
     font-size: 0.78rem;
@@ -1590,7 +1593,7 @@
   <div class="wrap">
     <div class="section-label reveal">Case Studies</div>
     <div class="work-header">
-      <div class="work-ghost-title" id="workGhostTitle">Plume Goon: Alter Ego Account</div>
+      <div class="work-ghost-title" id="workGhostTitle">International Conferences &amp; GTM</div>
       <div class="work-nav">
         <div class="work-counter"><span id="workCounterCurrent">01</span> / <span id="workCounterTotal">04</span></div>
         <button type="button" class="work-arrow" id="workPrev" aria-label="Previous case study" disabled>←</button>
@@ -1598,14 +1601,6 @@
       </div>
     </div>
     <div class="work-scroll" id="workScroll">
-      <div class="card stagger-card" data-title="Plume Goon: Alter Ego Account">
-        <div class="card-dot"></div>
-        <div class="card-tag">Plume Network · Brand · 2024–2025</div>
-        <div class="card-title">Plume Goon: Alter Ego Account</div>
-        <p class="card-desc">Created and scaled a crypto alter-ego account combining memes, culture, and authentic Web3 humor. Built a distinct brand voice that made Plume feel human in a space full of corporate accounts. Zero paid promotion.</p>
-        <div class="card-metrics">250K+ organic followers</div>
-        <div class="card-view-hint">View case study <span class="arrow">→</span></div>
-      </div>
       <div class="card stagger-card" data-title="International Conferences &amp; GTM">
         <div class="card-dot"></div>
         <div class="card-tag">Plume Network · Events · Global</div>
@@ -1619,8 +1614,23 @@
         <div class="card-tag">Plume Network · Community · 2024–2025</div>
         <div class="card-title">0 → 1M+ Community Growth</div>
         <p class="card-desc">Built one of the most active RWA communities in Web3 from scratch. Testnet campaign, TGE, and mainnet launch, all community-led. No paid acquisition, no shortcuts.</p>
-        <div class="card-metrics">1M+ Twitter &nbsp;·&nbsp; 400K+ Discord &nbsp;·&nbsp; $0 budget</div>
+        <div class="card-metrics">1M+ Twitter &nbsp;·&nbsp; 400K+ Discord &nbsp;·&nbsp; Founding team member</div>
         <div class="card-view-hint">View case study <span class="arrow">→</span></div>
+        <div class="card-modal-extra" hidden>
+          <p>Joined Plume Network in January 2024 as part of the founding team — before funding, before a Discord, before a single follower on X. Officially named as "Community" lead in the company's first public team announcement alongside its CEO, CBO, and CTO.</p>
+          <p>Built both channels from zero using content strategy and co-marketing: writing partner announcement posts and blog content that turned every new integration into a growth moment for both sides. This compounded through key milestones — the seed round announcement, and every major event Plume ran end-to-end, from logistics to team scheduling to all pre/post-event community communication, starting with ETH Denver 2024.</p>
+          <p>Ran the testnet campaign (mid-July to mid-September 2024), authoring community guides and engagement activities that helped drive testnet participation to 3.75M+ users and 265M+ transactions in under two months — while helping adoption grow across ecosystem projects building on Plume. After the initial window closed, kept the community engaged through maintenance mode until the next major milestone: token launch in January 2025.</p>
+          <p>By the time of my departure in August 2025, Plume had become the #1 blockchain globally for RWA holders — with more holders than the next 10 chains combined.</p>
+        </div>
+        <div class="card-sources" hidden>
+          <div class="card-sources-label">Sources</div>
+          <div class="card-sources-list">
+            <a href="https://plumenetwork.medium.com/introducing-the-plume-team-d578e5e29295" target="_blank" rel="noopener noreferrer">Introducing the Plume Team</a>
+            <a href="https://plume.org/blog/q3-2025-plume-update" target="_blank" rel="noopener noreferrer">Plume Update: Q3 2025</a>
+            <a href="https://www.bybit.com/en/learn/defi/what-is-plume-network" target="_blank" rel="noopener noreferrer">What is Plume Network (testnet stats)</a>
+            <a href="https://bingx.com/en/learn/article/what-is-plumenetwork" target="_blank" rel="noopener noreferrer">Plume Network Explained (testnet stats)</a>
+          </div>
+        </div>
       </div>
       <div class="card stagger-card" data-title="LaBitConf El Salvador 2021: End-to-End Sponsorship">
         <div class="card-dot"></div>
@@ -2507,12 +2517,21 @@
       tagEl.textContent = card.querySelector('.card-tag').textContent;
       titleEl.textContent = card.querySelector('.card-title').textContent;
 
-      var desc = card.querySelector('.card-desc');
       bodyEl.innerHTML = '';
-      if (desc) {
-        var p = document.createElement('p');
-        p.textContent = desc.textContent;
-        bodyEl.appendChild(p);
+      var extra = card.querySelector('.card-modal-extra');
+      if (extra) {
+        extra.querySelectorAll('p').forEach(function(srcP) {
+          var p = document.createElement('p');
+          p.textContent = srcP.textContent;
+          bodyEl.appendChild(p);
+        });
+      } else {
+        var desc = card.querySelector('.card-desc');
+        if (desc) {
+          var p = document.createElement('p');
+          p.textContent = desc.textContent;
+          bodyEl.appendChild(p);
+        }
       }
 
       var metrics = card.querySelector('.card-metrics');
