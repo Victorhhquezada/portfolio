@@ -596,6 +596,11 @@
     transition: transform 0.5s var(--ease), border-color 0.5s var(--ease), box-shadow 0.5s var(--ease);
     display: flex;
     flex-direction: column;
+    cursor: pointer;
+  }
+  .card:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 4px;
   }
   .card:hover {
     transform: translateY(-4px);
@@ -620,6 +625,7 @@
   .card:nth-child(3) .card-dot { background: #C9A700; }
   .card:nth-child(4) .card-dot { background: var(--blue); }
   .card:nth-child(5) .card-dot { background: var(--coral); }
+  .card:nth-child(6) .card-dot { background: #C9A700; }
   .card-tag {
     font-family: var(--font-mono);
     font-size: 0.72rem;
@@ -642,6 +648,31 @@
     font-size: 0.98rem;
     line-height: 1.6;
     flex-grow: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .card-view-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-60);
+    transition: color 0.3s var(--ease), gap 0.3s var(--ease);
+  }
+  .card-view-hint .arrow {
+    transition: transform 0.3s var(--ease);
+  }
+  .card:hover .card-view-hint {
+    color: var(--ink);
+  }
+  .card:hover .card-view-hint .arrow {
+    transform: translateX(4px);
   }
   .card-metrics {
     font-family: var(--font-mono);
@@ -683,6 +714,98 @@
   .card-sources-list a:hover {
     color: var(--ink);
     text-decoration-color: var(--ink-60);
+  }
+  .case-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 250;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .case-modal.is-open {
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .case-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 13, 13, 0.55);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+  }
+  .case-modal-panel {
+    position: relative;
+    max-width: 640px;
+    width: 100%;
+    max-height: 84vh;
+    overflow-y: auto;
+    background: var(--base);
+    border-radius: 24px;
+    padding: 48px clamp(28px, 5vw, 56px);
+    box-shadow: 0 40px 80px -24px rgba(13, 13, 13, 0.35);
+    opacity: 0;
+  }
+  .case-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--ink-15);
+    background: var(--base);
+    font-size: 1.3rem;
+    line-height: 1;
+    color: var(--ink-60);
+    cursor: pointer;
+    transition: border-color 0.3s var(--ease), color 0.3s var(--ease), transform 0.3s var(--ease);
+  }
+  .case-modal-close:hover {
+    border-color: var(--ink);
+    color: var(--ink);
+    transform: rotate(90deg);
+  }
+  .case-modal-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  .case-modal-tag {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-60);
+    margin-bottom: 14px;
+  }
+  .case-modal-title {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    letter-spacing: -0.01em;
+    margin-bottom: 20px;
+  }
+  .case-modal-body p {
+    font-family: var(--font-body);
+    font-weight: 400;
+    color: var(--ink-60);
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+  .case-modal-metrics {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--ink-08);
   }
   .explore-badge {
     position: fixed;
@@ -1481,6 +1604,7 @@
         <div class="card-title">Plume Goon: Alter Ego Account</div>
         <p class="card-desc">Created and scaled a crypto alter-ego account combining memes, culture, and authentic Web3 humor. Built a distinct brand voice that made Plume feel human in a space full of corporate accounts. Zero paid promotion.</p>
         <div class="card-metrics">250K+ organic followers</div>
+        <div class="card-view-hint">View case study <span class="arrow">→</span></div>
       </div>
       <div class="card stagger-card" data-title="International Conferences &amp; GTM">
         <div class="card-dot"></div>
@@ -1488,6 +1612,7 @@
         <div class="card-title">International Conferences &amp; GTM</div>
         <p class="card-desc">End-to-end event management across Token2049 (Dubai + Singapore), ETH Denver, Devcon Bangkok, ETHCC Brussels, Korea Blockchain Week Seoul, Permissionless NYC, Consensus Austin, and more.</p>
         <div class="card-metrics">10+ global events &nbsp;·&nbsp; 4 continents</div>
+        <div class="card-view-hint">View case study <span class="arrow">→</span></div>
       </div>
       <div class="card stagger-card" data-title="0 → 1M+ Community Growth">
         <div class="card-dot"></div>
@@ -1495,6 +1620,22 @@
         <div class="card-title">0 → 1M+ Community Growth</div>
         <p class="card-desc">Built one of the most active RWA communities in Web3 from scratch. Testnet campaign, TGE, and mainnet launch, all community-led. No paid acquisition, no shortcuts.</p>
         <div class="card-metrics">1M+ Twitter &nbsp;·&nbsp; 400K+ Discord &nbsp;·&nbsp; $0 budget</div>
+        <div class="card-view-hint">View case study <span class="arrow">→</span></div>
+      </div>
+      <div class="card stagger-card" data-title="LaBitConf El Salvador 2021: End-to-End Sponsorship">
+        <div class="card-dot"></div>
+        <div class="card-tag">Bitso · Event GTM · 2021</div>
+        <div class="card-title">LaBitConf El Salvador 2021: End-to-End Sponsorship</div>
+        <p class="card-desc">Owned Bitso's co-headline sponsorship (alongside Binance) of LaBitConf El Salvador 2021 — a landmark event held as El Salvador became the first country to adopt Bitcoin as legal tender. Managed a six-figure budget end-to-end: vendor and merch management, a citywide OOH campaign (airport billboard, 5 route panels, 2 venue-adjacent placements, 15 bus stops), and coordination across a 15+ person cross-functional marketing and growth team. Also ran the team off-site that aligned marketing strategy for the year ahead and planned the launch of Bitso's sponsorship of Tigres UANL — the first Latin American crypto company to sponsor a professional soccer team.</p>
+        <div class="card-metrics">Co-headline sponsor &nbsp;·&nbsp; 6-figure budget owned &nbsp;·&nbsp; First LATAM crypto-to-football sponsorship planned on-site &nbsp;·&nbsp; International &amp; local press coverage</div>
+        <div class="card-view-hint">View case study <span class="arrow">→</span></div>
+        <div class="card-sources" hidden>
+          <div class="card-sources-label">Sources</div>
+          <div class="card-sources-list">
+            <a href="https://es.beincrypto.com/crece-entusiasmo-global-bitcoin-btc-labitconf-el-salvador-special-edition-2021/" target="_blank" rel="noopener noreferrer">Crece el entusiasmo global por Bitcoin: LABITCONF El Salvador Special Edition 2021</a>
+            <a href="https://contxto.com/news/bitso-is-the-first-crypto-company-in-latam-to-announce-a-sports-sponsorship/" target="_blank" rel="noopener noreferrer">Bitso joins other crypto exchanges and begins sponsoring sports</a>
+          </div>
+        </div>
       </div>
       <div class="card stagger-card" data-title="BNB Chain LATAM Expansion">
         <div class="card-dot"></div>
@@ -1502,6 +1643,7 @@
         <div class="card-title">BNB Chain LATAM Expansion</div>
         <p class="card-desc">Led ecosystem growth across 8 cities in 7+ Latin American countries: meetups, hackathons, university programs, and regional campaigns. 150% retail community growth in 12 months.</p>
         <div class="card-metrics">8 cities &nbsp;·&nbsp; 7+ countries &nbsp;·&nbsp; 150% growth</div>
+        <div class="card-view-hint">View case study <span class="arrow">→</span></div>
       </div>
       <div class="card stagger-card" data-title="BNB Chain × Platzi: LATAM Developer Growth">
         <div class="card-dot"></div>
@@ -1509,7 +1651,8 @@
         <div class="card-title">BNB Chain × Platzi: LATAM Developer Growth</div>
         <p class="card-desc">Coordinated event logistics and played an active role in partnership decisions for BNB Chain's headline sponsorship of Platzi Conf 2022 in Bogotá — LATAM's largest tech education event (2,000+ in-person, 120,000+ online attendees). Present on the ground for the full activation.</p>
         <div class="card-metrics">300+ developer contacts captured &nbsp;·&nbsp; #1 trending in Colombia (X/Twitter)</div>
-        <div class="card-sources">
+        <div class="card-view-hint">View case study <span class="arrow">→</span></div>
+        <div class="card-sources" hidden>
           <div class="card-sources-label">Sources</div>
           <div class="card-sources-list">
             <a href="https://platzi.com/blog/web3-proyectos-creados-estudiantes-platzi-bnb-chain/" target="_blank" rel="noopener noreferrer">4 proyectos creados por estudiantes de Platzi con BNB Chain</a>
@@ -1518,6 +1661,19 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="case-modal" id="caseModal" aria-hidden="true">
+    <div class="case-modal-backdrop" data-modal-close></div>
+    <div class="case-modal-panel" role="dialog" aria-modal="true" aria-labelledby="caseModalTitle">
+      <button type="button" class="case-modal-close" data-modal-close aria-label="Close case study">&times;</button>
+      <div class="case-modal-dot" id="caseModalDot"></div>
+      <div class="case-modal-tag" id="caseModalTag"></div>
+      <h3 class="case-modal-title" id="caseModalTitle"></h3>
+      <div class="case-modal-body" id="caseModalBody"></div>
+      <div class="case-modal-metrics" id="caseModalMetrics"></div>
+      <div class="card-sources" id="caseModalSources" hidden></div>
     </div>
   </div>
 </section>
@@ -2316,6 +2472,113 @@
           once: true
         }
       });
+    });
+  })();
+
+  // ---------- case study modal ----------
+  (function() {
+    var modal = document.getElementById('caseModal');
+    var cards = document.querySelectorAll('#work .card');
+    if (!modal || !cards.length) return;
+
+    var backdrop = modal.querySelector('.case-modal-backdrop');
+    var panel = modal.querySelector('.case-modal-panel');
+    var dotEl = document.getElementById('caseModalDot');
+    var tagEl = document.getElementById('caseModalTag');
+    var titleEl = document.getElementById('caseModalTitle');
+    var bodyEl = document.getElementById('caseModalBody');
+    var metricsEl = document.getElementById('caseModalMetrics');
+    var sourcesEl = document.getElementById('caseModalSources');
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var hasGsap = typeof gsap !== 'undefined' && !reduceMotion;
+    var isOpen = false;
+    var lastFocused = null;
+    var tl;
+
+    if (hasGsap) {
+      tl = gsap.timeline({ paused: true })
+        .to(backdrop, { opacity: 1, duration: 0.35, ease: 'power2.out' })
+        .fromTo(panel, { opacity: 0, y: 24, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: 'power3.out' }, '-=0.2');
+    }
+
+    function openModal(card) {
+      dotEl.style.background = getComputedStyle(card.querySelector('.card-dot')).backgroundColor;
+      tagEl.textContent = card.querySelector('.card-tag').textContent;
+      titleEl.textContent = card.querySelector('.card-title').textContent;
+
+      var desc = card.querySelector('.card-desc');
+      bodyEl.innerHTML = '';
+      if (desc) {
+        var p = document.createElement('p');
+        p.textContent = desc.textContent;
+        bodyEl.appendChild(p);
+      }
+
+      var metrics = card.querySelector('.card-metrics');
+      metricsEl.innerHTML = metrics ? metrics.innerHTML : '';
+
+      var sources = card.querySelector('.card-sources');
+      if (sources) {
+        sourcesEl.innerHTML = sources.innerHTML;
+        sourcesEl.hidden = false;
+      } else {
+        sourcesEl.innerHTML = '';
+        sourcesEl.hidden = true;
+      }
+
+      isOpen = true;
+      lastFocused = document.activeElement;
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      if (tl) {
+        tl.timeScale(1);
+        tl.play();
+      } else {
+        backdrop.style.opacity = '1';
+        panel.style.opacity = '1';
+      }
+      modal.querySelector('.case-modal-close').focus();
+    }
+
+    function closeModal() {
+      isOpen = false;
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (tl) {
+        tl.timeScale(1.6);
+        tl.eventCallback('onReverseComplete', function() {
+          modal.classList.remove('is-open');
+        });
+        tl.reverse();
+      } else {
+        backdrop.style.opacity = '0';
+        panel.style.opacity = '0';
+        modal.classList.remove('is-open');
+      }
+      if (lastFocused) lastFocused.focus();
+    }
+
+    cards.forEach(function(card) {
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-haspopup', 'dialog');
+      card.addEventListener('click', function() { openModal(card); });
+      card.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openModal(card);
+        }
+      });
+    });
+
+    modal.querySelectorAll('[data-modal-close]').forEach(function(el) {
+      el.addEventListener('click', closeModal);
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && isOpen) closeModal();
     });
   })();
 
