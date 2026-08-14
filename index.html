@@ -652,6 +652,38 @@
     padding-top: 20px;
     border-top: 1px solid var(--ink-08);
   }
+  .card-sources {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--ink-08);
+  }
+  .card-sources-label {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-40);
+    margin-bottom: 8px;
+  }
+  .card-sources-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .card-sources-list a {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--ink-60);
+    text-decoration: underline;
+    text-decoration-color: var(--ink-15);
+    text-underline-offset: 2px;
+    transition: color 0.3s var(--ease), text-decoration-color 0.3s var(--ease);
+  }
+  .card-sources-list a:hover {
+    color: var(--ink);
+    text-decoration-color: var(--ink-60);
+  }
   .explore-badge {
     position: fixed;
     top: 0;
@@ -1477,6 +1509,14 @@
         <div class="card-title">BNB Chain × Platzi: LATAM Developer Growth</div>
         <p class="card-desc">Coordinated event logistics and played an active role in partnership decisions for BNB Chain's headline sponsorship of Platzi Conf 2022 in Bogotá — LATAM's largest tech education event (2,000+ in-person, 120,000+ online attendees). Present on the ground for the full activation.</p>
         <div class="card-metrics">300+ developer contacts captured &nbsp;·&nbsp; #1 trending in Colombia (X/Twitter)</div>
+        <div class="card-sources">
+          <div class="card-sources-label">Sources</div>
+          <div class="card-sources-list">
+            <a href="https://platzi.com/blog/web3-proyectos-creados-estudiantes-platzi-bnb-chain/" target="_blank" rel="noopener noreferrer">4 proyectos creados por estudiantes de Platzi con BNB Chain</a>
+            <a href="https://www.bnbchain.org/en/blog/bnb-chain-partners-with-platzi-the-largest-online-learning-community-in-latin-america" target="_blank" rel="noopener noreferrer">BNB Chain Partners Platzi, the Largest Online Learning Community in Latin America</a>
+            <a href="https://x.com/BNBCHAIN/status/1573669381170774016" target="_blank" rel="noopener noreferrer">BNB Chain announcement</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
