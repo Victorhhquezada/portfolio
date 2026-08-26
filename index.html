@@ -416,6 +416,15 @@
   }
   .hero-drag-hint.is-visible { opacity: 1; transform: translateY(0); }
   .hero-drag-hint.is-hidden { opacity: 0 !important; transform: translateY(6px) !important; }
+  .hero-eyebrow {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--coral);
+    margin-bottom: 16px;
+  }
   .hero h1 {
     font-family: var(--font-head);
     font-weight: 700;
@@ -1190,6 +1199,41 @@
     );
   }
 
+  /* ---------- why this works ---------- */
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .why-panel {
+    border: 1px solid var(--ink-15);
+    border-radius: 20px;
+    padding: 40px;
+    background: var(--base);
+    transition: transform 0.5s var(--ease), border-color 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  }
+  .why-panel:hover {
+    transform: translateY(-4px);
+    border-color: var(--ink);
+    box-shadow: 0 24px 48px -24px rgba(13,13,13,0.18);
+  }
+  .why-panel h3 {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 1.4rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+  }
+  .why-panel:nth-child(1) h3 { color: var(--coral); }
+  .why-panel:nth-child(2) h3 { color: var(--blue); }
+  .why-panel p {
+    font-family: var(--font-body);
+    font-weight: 400;
+    color: var(--ink-60);
+    font-size: 0.98rem;
+    line-height: 1.6;
+  }
+
   /* ---------- about ---------- */
   .about-grid {
     display: grid;
@@ -1407,6 +1451,7 @@
     .proof-caption-title { font-size: 0.68rem; }
     .proof-caption-meta { font-size: 0.6rem; }
     .proof-stamp { font-size: 0.9rem; top: -2px; }
+    .why-grid { grid-template-columns: 1fr; gap: 20px; }
     .about-grid { grid-template-columns: 1fr; gap: 48px; }
     .footer { padding: 90px 0 48px; }
     .social-links { gap: 10px; margin-top: 48px; }
@@ -1519,6 +1564,7 @@
   <div class="hero-content">
     <div class="hero-anchor" id="heroAnchor">
       <div class="hero-drag-hint" id="heroDragHint" aria-hidden="true">Drag to move</div>
+      <div class="hero-eyebrow">GTM Engineer</div>
       <h1>Full-stack <span class="rotator" id="rotator"><span class="rotator-track" id="rotatorTrack"></span></span> operator.</h1>
       <p class="hero-sub">7+ years building brands, communities, and growth engines from zero across Web3 and beyond.</p>
     </div>
@@ -1578,6 +1624,23 @@
         <span>Organic Acquisition</span>
         <span class="ticker-dot">·</span>
       </span>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <div class="section-label reveal">Why this works</div>
+    <div class="section-title reveal">Built from both sides.</div>
+    <div class="why-grid">
+      <div class="why-panel reveal">
+        <h3>Community-native growth</h3>
+        <p>I've built and run Web3 communities from zero to seven figures, without paid acquisition, through real trust and an authentic voice. That's the part most GTM systems skip.</p>
+      </div>
+      <div class="why-panel reveal">
+        <h3>GTM automation</h3>
+        <p>Now I'm building automation and AI-driven workflows that scale outbound, content, and growth operations. This site runs on that same stack.</p>
+      </div>
     </div>
   </div>
 </section>
