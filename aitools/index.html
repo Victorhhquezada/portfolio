@@ -14,16 +14,16 @@
     }
   })
 </script>
-<title>Victor Hernandez · Writing</title>
-<meta name="description" content="Notes on growth marketing, community building, and GTM engineering from Victor Hernandez, 7+ years scaling Web3 ecosystems.">
-<meta property="og:title" content="Victor Hernandez · Writing">
-<meta property="og:description" content="Notes on growth marketing, community building, and GTM engineering across Web3 and fintech.">
-<meta property="og:url" content="https://victorhq.com/writing.html">
+<title>Victor Hernandez · AI Tools</title>
+<meta name="description" content="AI tools, agents, and sites Victor Hernandez has built: a community reporting agent, a personal training tracker, and client work, built end-to-end with AI-assisted workflows.">
+<meta property="og:title" content="Victor Hernandez · AI Tools">
+<meta property="og:description" content="Tools, agents, and sites built with AI-assisted workflows, from GTM automation to client sites.">
+<meta property="og:url" content="https://victorhq.com/aitools/">
 <meta property="og:image" content="https://victorhq.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:description" content="Notes on growth marketing, community building, and GTM engineering across Web3 and fintech.">
+<meta name="twitter:description" content="Tools, agents, and sites built with AI-assisted workflows, from GTM automation to client sites.">
 <meta name="twitter:image" content="https://victorhq.com/og-image.png">
 <script type="application/ld+json">
 {
@@ -31,15 +31,15 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "victorhq", "item": "https://victorhq.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://victorhq.com/writing.html" }
+    { "@type": "ListItem", "position": 2, "name": "AI Tools", "item": "https://victorhq.com/aitools/" }
   ]
 }
 </script>
-<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-<link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-<link rel="manifest" href="favicon/site.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../favicon/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+<link rel="manifest" href="../favicon/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -116,7 +116,7 @@
     justify-content: space-between;
   }
   .logo { font-family: var(--font-head); font-weight: 700; font-size: 1.15rem; letter-spacing: -0.02em; }
-  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
   .nav-links a {
     font-family: var(--font-mono);
     font-size: 0.78rem;
@@ -224,65 +224,90 @@
     margin-bottom: 48px;
   }
 
-  /* ---------- posts ---------- */
-  .post-list {
+  /* ---------- tool gallery ---------- */
+  .tool-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .tool-card {
     display: flex;
     flex-direction: column;
+    border: 1px solid var(--ink-15);
+    border-radius: 20px;
+    padding: 40px;
+    background: var(--white);
+    transition: transform 0.5s var(--ease), border-color 0.5s var(--ease), box-shadow 0.5s var(--ease);
   }
-  .post-row {
-    display: block;
-    padding: 36px 0;
-    border-top: 1px solid var(--ink-08);
-    transition: padding-left 0.3s var(--ease);
+  a.tool-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--ink);
+    box-shadow: 0 24px 48px -24px rgba(13,13,13,0.18);
   }
-  .post-row:last-child {
-    border-bottom: 1px solid var(--ink-08);
+  .tool-card-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    background: var(--blue);
   }
-  .post-row:hover {
-    padding-left: 12px;
-  }
-  .post-date {
+  .tool-card:nth-child(2) .tool-card-dot { background: var(--coral); }
+  .tool-card:nth-child(3) .tool-card-dot { background: #C9A700; }
+  .tool-card:nth-child(4) .tool-card-dot { background: var(--blue); }
+  .tool-card-tag {
     font-family: var(--font-mono);
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--ink-40);
-    margin-bottom: 10px;
+    color: var(--ink-60);
+    margin-bottom: 14px;
   }
-  .post-title {
+  .tool-card-title {
     font-family: var(--font-head);
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     letter-spacing: -0.01em;
-    line-height: 1.32;
-    margin-bottom: 10px;
-    max-width: 62ch;
+    margin-bottom: 14px;
   }
-  .post-excerpt {
+  .tool-card-desc {
     font-family: var(--font-body);
-    font-weight: 300;
-    font-size: 0.98rem;
-    line-height: 1.6;
+    font-weight: 400;
     color: var(--ink-60);
-    max-width: 62ch;
-    margin-bottom: 16px;
+    font-size: 0.96rem;
+    line-height: 1.6;
+    flex-grow: 1;
   }
-  .post-readmore {
+  .tool-card-stack {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px solid var(--ink-08);
+  }
+  .tool-card-link {
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    margin-top: 16px;
     font-family: var(--font-mono);
     font-size: 0.76rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    color: var(--ink);
+    color: var(--ink-60);
+    transition: color 0.3s var(--ease);
   }
-  .post-readmore .arrow {
-    transition: transform 0.3s var(--ease);
+  .tool-card-link .arrow { transition: transform 0.3s var(--ease); }
+  a.tool-card:hover .tool-card-link { color: var(--ink); }
+  a.tool-card:hover .tool-card-link .arrow { transform: translateX(4px); }
+  .tool-card.is-placeholder {
+    border-style: dashed;
+    background: transparent;
   }
-  .post-row:hover .post-readmore .arrow {
-    transform: translateX(4px);
-  }
+  .tool-card.is-placeholder .tool-card-tag,
+  .tool-card.is-placeholder .tool-card-title { color: var(--ink-40); }
+  .tool-card.is-placeholder .tool-card-dot { background: var(--ink-15) !important; }
 
   /* ---------- footer ---------- */
   .footer {
@@ -342,17 +367,17 @@
   @media (max-width: 768px) {
     .wrap { padding: 0 20px; }
     .nav-inner { padding: 16px 20px; }
-    .nav-links { gap: 18px; }
+    .nav-links { gap: 16px; }
     .header { padding: 120px 0 60px; }
     section { padding: 64px 0; }
-    .post-title { font-size: 1.15rem; }
+    .tool-grid { grid-template-columns: 1fr; }
     .footer-links { flex-direction: column; gap: 16px; }
   }
 
   @media (max-width: 400px) {
     .nav-inner { padding: 16px; }
-    .nav-links { gap: 12px; }
-    .nav-links a { font-size: 0.66rem; }
+    .nav-links { gap: 10px; }
+    .nav-links a { font-size: 0.62rem; }
     .logo { font-size: 1rem; }
   }
 
@@ -372,14 +397,14 @@
 
 <nav class="nav">
   <div class="nav-inner">
-    <a href="index.html" class="logo">victorhq</a>
+    <a href="../index.html" class="logo">victorhq</a>
     <ul class="nav-links">
-      <li><a href="index.html#work">Work</a></li>
-      <li><a href="experience.html">Experience</a></li>
-      <li><a href="writing.html" class="active">Writing</a></li>
-      <li><a href="aitools/">AI Tools</a></li>
-      <li><a href="index.html#about">About</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="../index.html#work">Work</a></li>
+      <li><a href="../experience.html">Experience</a></li>
+      <li><a href="../writing.html">Writing</a></li>
+      <li><a href="./" class="active">AI Tools</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
     </ul>
   </div>
 </nav>
@@ -388,43 +413,55 @@
   <div class="wrap">
     <nav class="breadcrumb reveal" aria-label="Breadcrumb">
       <ol>
-        <li><a href="index.html">victorhq</a></li>
+        <li><a href="../index.html">victorhq</a></li>
         <li aria-hidden="true">/</li>
-        <li aria-current="page">Writing</li>
+        <li aria-current="page">AI Tools</li>
       </ol>
     </nav>
-    <span class="eyebrow reveal">Notes</span>
-    <h1 class="reveal">Growth, GTM, and community. Written down.</h1>
-    <p class="header-sub reveal">Notes on growth marketing, community building, and the shift toward GTM engineering. Posts land here as they're written.</p>
+    <span class="eyebrow reveal">Built with AI</span>
+    <h1 class="reveal">Tools, agents, and sites I've built.</h1>
+    <p class="header-sub reveal">Part of going deep on GTM Engineering: shipping real, working things with AI-assisted workflows, not just talking about it.</p>
     <div class="header-links reveal">
-      <a class="pill-link" href="https://linkedin.com/in/victorhhquezada" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="pill-link" href="index.html">Back to portfolio</a>
+      <a class="pill-link" href="https://github.com/Victorhhquezada" target="_blank" rel="noopener">GitHub</a>
+      <a class="pill-link" href="../index.html">Back to portfolio</a>
     </div>
   </div>
 </header>
 
-<section id="posts">
+<section id="tools">
   <div class="wrap">
-    <div class="section-label reveal">Notes</div>
-    <div class="post-list">
-      <a class="post-row reveal" href="https://linkedin.com/in/victorhhquezada" target="_blank" rel="noopener">
-        <div class="post-date">Coming soon</div>
-        <div class="post-title">What it actually took to grow a Web3 community to 1M+ with $0 paid acquisition</div>
-        <p class="post-excerpt">The real playbook behind scaling a social presence from zero, no paid acquisition, no shortcuts, just consistent execution and an authentic voice.</p>
-        <div class="post-readmore">Read more <span class="arrow">&rarr;</span></div>
+    <div class="section-label reveal">Gallery</div>
+    <div class="tool-grid">
+      <a class="tool-card reveal" href="https://github.com/Victorhhquezada/community-reporter" target="_blank" rel="noopener">
+        <div class="tool-card-dot"></div>
+        <div class="tool-card-tag">Agent · Open Source</div>
+        <div class="tool-card-title">Community Reporter</div>
+        <p class="tool-card-desc">A plug-and-play biweekly community health report for Discord, Telegram, X, YouTube, Reddit, and LinkedIn. No logins, no paid platform APIs. Pulls growth, activity, and top posts, then uses Claude to turn raw numbers into sentiment, themes, and suggested action items in one report.</p>
+        <div class="tool-card-stack">Python &nbsp;·&nbsp; Claude &nbsp;·&nbsp; Apify</div>
+        <div class="tool-card-link">View on GitHub <span class="arrow">&rarr;</span></div>
       </a>
-      <a class="post-row reveal" href="https://linkedin.com/in/victorhhquezada" target="_blank" rel="noopener">
-        <div class="post-date">Coming soon</div>
-        <div class="post-title">Running marketing as a 2-person team at a pre-launch startup: lessons from Plume</div>
-        <p class="post-excerpt">What actually gets prioritized when there's no team to delegate to, and how that constraint shapes better GTM decisions.</p>
-        <div class="post-readmore">Read more <span class="arrow">&rarr;</span></div>
+      <a class="tool-card reveal" href="https://abeja-tracker.victorhhquezada.workers.dev" target="_blank" rel="noopener">
+        <div class="tool-card-dot"></div>
+        <div class="tool-card-tag">Tool · Private</div>
+        <div class="tool-card-title">ABEJA</div>
+        <p class="tool-card-desc">A personal training tracker, rebuilt and rebranded from a fitness-tracker fork into its own thing. Deployed as a Cloudflare Worker, private access.</p>
+        <div class="tool-card-stack">Cloudflare Workers</div>
+        <div class="tool-card-link">View live <span class="arrow">&rarr;</span></div>
       </a>
-      <a class="post-row reveal" href="https://linkedin.com/in/victorhhquezada" target="_blank" rel="noopener">
-        <div class="post-date">Coming soon</div>
-        <div class="post-title">Why I'm becoming a GTM Engineer: growth work that survives an AI-native market</div>
-        <p class="post-excerpt">On combining growth strategy with automation and AI-driven workflows, and why that combination is where the work is heading.</p>
-        <div class="post-readmore">Read more <span class="arrow">&rarr;</span></div>
+      <a class="tool-card reveal" href="https://ronvoid.com" target="_blank" rel="noopener">
+        <div class="tool-card-dot"></div>
+        <div class="tool-card-tag">Client Site</div>
+        <div class="tool-card-title">Ronvoid Studio</div>
+        <p class="tool-card-desc">A site for a private tattoo studio in Mexico City, blackwork and fine-line, appointment-only and referral-based. Built to match the studio's discreet, editorial brand.</p>
+        <div class="tool-card-stack">Web Design</div>
+        <div class="tool-card-link">Visit site <span class="arrow">&rarr;</span></div>
       </a>
+      <div class="tool-card is-placeholder reveal">
+        <div class="tool-card-dot"></div>
+        <div class="tool-card-tag">Coming soon</div>
+        <div class="tool-card-title">Next build</div>
+        <p class="tool-card-desc">Another tool lands here soon.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -440,13 +477,13 @@
     <div class="footer-links reveal">
       <a href="https://twitter.com/VictorhqCrypto" target="_blank" rel="noopener">@VictorhqCrypto</a>
       <a href="https://linkedin.com/in/victorhhquezada" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="index.html">victorhq.com</a>
+      <a href="../index.html">victorhq.com</a>
     </div>
   </div>
 </footer>
 
-<script src="vendor/gsap/gsap.min.js"></script>
-<script src="vendor/gsap/ScrollTrigger.min.js"></script>
+<script src="../vendor/gsap/gsap.min.js"></script>
+<script src="../vendor/gsap/ScrollTrigger.min.js"></script>
 <script>
   var revealEls = document.querySelectorAll('.reveal');
   var io = new IntersectionObserver(function(entries) {
