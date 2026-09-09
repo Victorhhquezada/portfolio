@@ -1558,7 +1558,7 @@
     <div class="hero-anchor" id="heroAnchor">
       <div class="hero-drag-hint" id="heroDragHint" aria-hidden="true">Drag to move</div>
       <h1>Full-stack <span class="rotator" id="rotator"><span class="rotator-track" id="rotatorTrack"></span></span> operator.</h1>
-      <p class="hero-sub">8+ years building brands, communities, and growth engines from zero across Web3 and beyond.</p>
+      <p class="hero-sub"><span class="years-exp">8+</span> years building brands, communities, and growth engines from zero across Web3 and beyond.</p>
     </div>
   </div>
 
@@ -2030,7 +2030,7 @@
     <div class="about-grid">
       <div class="about">
         <h2 class="split-reveal">Community isn't a channel, it's a culture.</h2>
-        <p class="split-reveal">I've spent 8+ years across brand, content, growth, and community for Web3 companies, organic growth being one result of that, not the headline. Based in Mexico City, bilingual in Spanish and English, and I've built programs across 7+ countries in LATAM.</p>
+        <p class="split-reveal">I've spent <span class="years-exp">8+</span> years across brand, content, growth, and community for Web3 companies, organic growth being one result of that, not the headline. Based in Mexico City, bilingual in Spanish and English, and I've built programs across 7+ countries in LATAM.</p>
         <p class="split-reveal">Lately I'm focused on where <strong>RWA and TradFi meet Web3</strong>: helping serious financial products find their footing in crypto-native communities, and helping crypto-native communities take TradFi seriously.</p>
       </div>
       <div class="reveal">
@@ -2101,6 +2101,17 @@
 <script src="vendor/gsap/Draggable.min.js"></script>
 <script src="vendor/gsap/InertiaPlugin.min.js"></script>
 <script>
+  // ---------- years of experience (auto-increments every February) ----------
+  (function() {
+    var anchorYear = 2018;
+    var now = new Date();
+    var years = now.getFullYear() - anchorYear;
+    if (now.getMonth() === 0) years -= 1; // January: hasn't hit this year's February bump yet
+    document.querySelectorAll('.years-exp').forEach(function(el) {
+      el.textContent = years + '+';
+    });
+  })();
+
   // ---------- hero entrance (GSAP) ----------
   function startHeroEntrance() {
     if (typeof gsap === 'undefined' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

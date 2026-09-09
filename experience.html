@@ -629,7 +629,7 @@
       </ol>
     </nav>
     <span class="eyebrow reveal">Curriculum Vitae</span>
-    <h1 class="reveal">8+ years building communities that compound.</h1>
+    <h1 class="reveal"><span class="years-exp">8+</span> years building communities that compound.</h1>
     <p class="header-sub reveal">Community Lead, Marketing Operator, and GTM Strategist across Web3 and fintech. Mexico City. Bilingual EN/ES.</p>
     <div class="header-links reveal">
       <a class="pill-link" href="https://linkedin.com/in/victorhhquezada" target="_blank" rel="noopener">LinkedIn</a>
@@ -1056,6 +1056,17 @@
 <script src="vendor/gsap/gsap.min.js"></script>
 <script src="vendor/gsap/ScrollTrigger.min.js"></script>
 <script>
+  // ---------- years of experience (auto-increments every February) ----------
+  (function() {
+    var anchorYear = 2018;
+    var now = new Date();
+    var years = now.getFullYear() - anchorYear;
+    if (now.getMonth() === 0) years -= 1; // January: hasn't hit this year's February bump yet
+    document.querySelectorAll('.years-exp').forEach(function(el) {
+      el.textContent = years + '+';
+    });
+  })();
+
   var revealEls = document.querySelectorAll('.reveal');
   var io = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry, i) {
